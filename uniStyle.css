@@ -1,0 +1,436 @@
+
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+body{
+    font-size: x-small;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: lighter;
+    background: linear-gradient(to bottom  , rgb(40, 50, 60) , rgb(132, 150, 172), rgb(183, 203, 223));
+   height: 100vh;
+    
+}
+
+.links{ 
+   
+        display: inline-block;
+        padding: 0.375rem 0.75rem;
+        margin-bottom: 0;
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+        cursor: pointer;
+        background-color: #007bff;
+        border: 1px solid #007bff;
+        color: #fff;
+        border-radius: 0.25rem;
+        text-decoration: none;
+        height: 30px; 
+        align-content: center;
+
+    
+}
+
+
+.textBox {
+    text-align: center;
+    width: 10%;
+    display: inline-block; 
+    margin: 0 10px; 
+}
+
+.index-link{
+    text-decoration: none;
+   color: white;
+   
+    font-size: 15px;
+    border-radius: 10px;
+
+    font-family: Arial, Helvetica, sans-serif;
+    
+}
+
+/*
+
+.link-container{
+    display: inline-block;
+    margin-left: 20px;
+    position: relative;
+    left: 500px;
+    bottom: 20px;
+    
+  
+ 
+}
+
+
+.header{
+    width:100%;
+    height: 80px;
+    background-color: rgb(114, 114, 228);
+}
+.title{
+    text-decoration: none;
+    color: rgb(90, 46, 171);
+    /* background-color: silver; 
+    font-size: 30px;
+    border-radius: 10px;
+    width: 50%;
+    
+
+    position: relative;
+    left: 30px;
+    top: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.box{
+
+    background-color: rgb(79, 79, 201);
+    width: 180px;
+    height: 180px;
+    margin-left: 20px;
+    position: relative;
+    top: 100px;
+    display: inline-block;
+    border-radius: 10px;
+    text-align: center;
+    justify-content: center;
+
+    
+}
+
+.bow-row{
+    
+    display: inline-block;
+  margin: 10px;
+  text-decoration: none;
+  color: white;
+  
+   font-size: 15px;
+   border-radius: 10px;
+
+   font-family: Arial, Helvetica, sans-serif;
+   position: relative;
+   left: 300px;
+
+
+
+    
+}
+
+.box-number{
+  
+    position: relative;
+    top: 50px;
+    font-size: 30px;
+}
+
+a.links.faq{
+    border-radius: 50%;
+    background-color: transparent;
+    border-color: transparent;
+    height: 20px;
+    width: 20px;
+    color: blue;
+    
+
+}
+
+
+
+.grid{
+    display:inline-grid;
+    grid-template-columns: auto,auto;
+
+}
+
+
+.left{
+    background-color: blue;
+    width: 50vh;
+
+}
+
+.right{
+    background-color: red;
+    width: 50vh;
+
+}
+
+
+
+
+/* .title{
+    grid-area: top;
+    width: 100px;
+    height: 100px;
+}
+
+
+
+.header{
+    background-color: blue;
+    width:100px;
+    grid-area: left;
+    width: 100px;
+    height: 100px;
+   
+}
+
+.main{
+    background-color: yellow;
+    width:100px;
+    grid-area: main;
+    width: 100px;
+    height: 100px;
+
+}
+
+.link-container{
+    text-decoration: none;
+    color:red;
+}
+
+.index-link{
+    text-decoration: none;
+    color:white;
+} */
+
+
+
+.header{
+    background-color: rgb(63, 142, 196);
+    height: 100px;
+    margin: 0;
+    padding: 0;
+}
+.link-container{
+    display: inline-block;
+    margin-left: 30px;
+}
+
+.box-row{
+
+    width: 700px;
+   text-align: center;
+   position: relative;
+   top:150px;
+   left: 250px;
+  
+}
+
+.box{
+    background-color: rgb(105, 102, 166);
+    border-radius: 20px;
+    width: 200px;
+    height: 200px;
+    display: inline-block;
+    margin: 10px;
+    text-decoration: none;
+   
+}
+
+:hover.box{
+    background-color: rgb(66, 64, 103);
+    border-radius: 20px;
+    width: 200px;
+    height: 200px;
+    display: inline-block;
+    margin: 10px;
+    text-decoration: none;
+   
+}
+
+.box-content{
+    margin-top: 20px;
+    font-size: 30px;
+    text-align: center;
+    color: white;
+    text-decoration: none;
+}
+
+.box-number{
+    margin-top: 20px;
+    font-size: 30px;
+    text-align: center;
+    color: white;
+    text-decoration: none;
+
+}
+
+.loginForm{
+
+    background-color: rgb(81, 92, 195);
+    width: 300px;
+    height: 300px;
+    font-size: 20px;
+    border-radius: 20px;
+    color: white;
+    position:relative;
+    left: 39%;
+    top: 90px;
+
+}
+
+.formContent{
+text-align: center;
+position: relative;
+top: 30px;
+
+}
+
+.log{
+    margin-top: 20px;
+}
+
+.txtBox{
+    border-radius: 5px;
+    border-width: 0px;
+}
+
+.log-label{
+    position: relative;
+    top: 13px;
+    right: 30px;
+}
+
+.log-btn{
+    background-color: white;
+    color:rgb(81, 92, 195);
+    width: 100px;
+    height: 40px;
+    border-radius:10px;
+    border-width: 0px;
+    font-size: 20px;
+}
+
+:hover.log-btn{
+cursor: pointer;
+background-color: rgb(169, 162, 162);
+color: white;
+}
+
+#tableBody{
+background-color: blue;
+}
+
+.table-container table{
+    width:90%;
+}
+
+
+.table-container {
+    margin: 0 auto;
+    width: 80%; /* Set the width of the container to match the table */
+    max-height: 400px; /* Set the maximum height for the table container */
+    overflow-y: auto;
+}
+
+.table-container::-webkit-scrollbar {
+    /* display: none; */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+}
+
+th{
+    background-color: blue;
+}
+
+thead th {
+    position: sticky;
+    top: 0;
+    background-color: rgb(92, 92, 204);
+    z-index: 1;
+}
+
+.table-container {
+    max-height: 400px; /* Set the maximum height for the table body */
+    overflow-y: auto; /* Enable vertical scrolling */
+}
+
+.header{
+    background-color: rgb(12, 31, 52);
+    width: 200px;
+    height: 400px;
+    position: absolute;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    left: 20px;
+    top: 80px;
+    box-shadow: -10px 10px 10px rgba(12, 31, 52, 0.436);
+
+   
+}
+
+.header a{
+color: rgb(218, 226, 235);
+flex: 1;
+font-size: 20px;
+
+}
+
+.header div{
+    
+    margin-top: 10px;
+    position: relative;
+    right: 16px;
+    top: 20px;
+    text-align: center;
+}
+
+.header .index-link:last-child {
+    position: relative;
+    top: 50px;
+    color: red;
+    font-weight: bolder;
+ 
+
+ 
+}
+
+h2{
+    color: aliceblue;
+}
+
+
+
+
+.mainBody{
+
+    position: relative;
+    bottom: 430px;
+    width: 800px;
+    left: 300px;
+    height: 500px;
+    
+    
+    }
+    
+    
+    .mainBody .table-class{
+        max-height: 400px; /* Set the maximum height for the table body */
+        overflow-y: auto;
+        border-radius: 10px;
+    }
+    
+    
+    .mainBody .table-class::-webkit-scrollbar {
+        display: none;
+    }

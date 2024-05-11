@@ -1,0 +1,20 @@
+*{
+    margin: 0px;
+    padding:0px;
+}
+
+div.box-row{
+position: relative;
+left: 240px;
+bottom: 700px;
+
+height: 10px;
+}
+
+.box-row a{
+    position: relative;
+    bottom: 124px;
+    right:20px;
+
+}
+
