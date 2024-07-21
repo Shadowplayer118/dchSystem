@@ -8,7 +8,7 @@ if (isset($_GET['search'])) {
     $filterValue = $_GET['search'];
     // $sql = "SELECT * FROM inventory2 WHERE CONCAT(brand, category, itemCode, itemNumber, itemDesc_1, itemDesc_2, itemDesc_3) LIKE '%$filterValue%' ORDER BY inventory_Id DESC";
     $sql = "SELECT * FROM inventory2  WHERE CONCAT(brand, category, itemCode, itemNumber, itemDesc_1, itemDesc_2, itemDesc_3) LIKE '%FLUIDS%' ORDER BY inventory_Id DESC";
-    $sql = "SELECT * FROM inventory2  WHERE CONCAT(brand,category,itemDesc_1, itemDesc_2) LIKE '%$filterValue%' or '% %' ORDER BY inventory_Id DESC";
+    $sql = "SELECT * FROM inventory2  WHERE CONCAT(brand,category,itemCode,itemDesc_1, itemDesc_2) LIKE '%$filterValue%' or '% %' ORDER BY inventory_Id DESC";
 
     unset($filterValue);
     
@@ -48,6 +48,9 @@ $result = mysqli_query($con, $sql);
 <body>
 
 <h2>DCH Inventory </h2>
+
+
+
 <div class="header">
 
 
@@ -91,13 +94,17 @@ $result = mysqli_query($con, $sql);
 
 </div>
 
-<div class="controls">
-<h3>Inventory Table</h3>
 
-<form action="" method="GET">
+
+<div class="controls">
+<h3 class='title'></h3> <br> 
+
+<form action="" method="GET" class = "search-bar"> 
+    
+<button type="submit" class = "searchBtn btn btn-primary search-btn">Search</button>
     <label for="filter"></label>
-    <input id = "search" type="text" class = "searchBox" name = "search" value="<?php if(isset($_GET['search'])){echo $_GET['search'];}?>" class = "search-box" placeholder= "Search data"autocomplete="off"> 
-    <button type="submit" class = "searchBtn">Search</button>
+    <input id = "search" type="text" class = "searchBox form-control" name = "search" value="<?php if(isset($_GET['search'])){echo $_GET['search'];}?>" class = "search-box" placeholder= "Search data"autocomplete="off"> 
+
     
 </form>
 
@@ -108,7 +115,7 @@ $result = mysqli_query($con, $sql);
 
   
 
-<div class="table-container" style="overflow-x: hidden;">
+<div class="table-container">
     <table class="">
         <thead class = "table-head">
         <tr>
@@ -127,6 +134,7 @@ $result = mysqli_query($con, $sql);
             <th scope="col">TOTAL STOCK VALUE</th>
             <th scope="col">REQUESTED</th>
             <th scope="col">ORDERED</th>
+            <th scope="col">LOCATION</th>
             <th scope="col">ACTIONS</th>
         </tr>
         </thead>
@@ -150,6 +158,7 @@ if ($result) {
         $requested = $row['requested'];
         $ordered = $row['ordered'];
         $active = $row['active'];
+        $location = $row['location'];
 
         $requestedLink = $requested === "Pending" ? '<a href="../Requesition_Folder/Requesiton_Manager.php"  class = "pend">Pending</a>' : $requested;
         $orderedLink = $ordered === "Pending" ? '<a href="../Order_Folder/Order_Manager.php" class = "pend">Pending</a>' : $ordered;
@@ -168,10 +177,11 @@ if ($result) {
             <th scope="col">' . $totalstockValue . '</th>
             <th scope="col" class = "pending">' . $requestedLink . '</th>
             <th scope="col" class = "pending">' . $orderedLink . '</th>
+                      <th scope="col" class = "pending">' . $location . '</th>
           
             <td>
               <a href="inventory_Update.php?updateId=' . $inventory_Id . '" target="_blank" class = "links">Update</a>
-              <a href="inventory_Delete.php?deleteId=' . $inventory_Id . '" class = "links" style = "background-color:red;"">Delete</a>
+              <a href="inventory_Delete.php?deleteId=' . $inventory_Id . '" class = "links deleteConfirm" style = "background-color:red;"">Delete</a>
             </td>
         </tr>
         ';
@@ -192,6 +202,24 @@ if ($result) {
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="main.js"></script>
 
+
+<script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get all links with the class 'confirm-link'
+            var links = document.querySelectorAll('a.deleteConfirm');
+
+            // Add click event listeners to all links
+            links.forEach(function(link) {
+                link.addEventListener('click', function(event) {
+                    // Show confirmation dialog
+                    if (!confirm("Are you sure you want to proceed?")) {
+                        // Prevent the default action of the link
+                        event.preventDefault();
+                    }
+                });
+            });
+        });
+    </script>
 
 <script>
         function closeTab() {

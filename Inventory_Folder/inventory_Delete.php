@@ -1,19 +1,34 @@
 <?php
 include '../inventoryDb_connect.php';
 
-try {
-    if(isset($_GET['deleteId'])){
-        $id = $_GET['deleteId'];
-        echo '<script>
-                if(confirm("Are you sure you want to delete this item?")){
-                    window.location.href = "delete.php?confirmedDeleteId='.$id.'";
-                } else {
+if (isset($_GET['deleteId'])) {
+    $id = $_GET['deleteId'];
+
+    
+        // Perform the deletion query here
+        $sql = "DELETE FROM inventory2 WHERE inventory_id = ?";
+        $stmt = $con->prepare($sql);
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+
+        if ($stmt->affected_rows > 0) {
+            echo '<script>
+                    alert("Item deleted successfully.");
                     window.location.href = "inventoryTable.php";
-                }
-              </script>';
-    }
-} catch (mysqli_sql_exception $e) {
-    // Handle the exception
-    echo '<script>alert("Error: This item is still in use. It is either pending, requested, or a supplier is currently holding it."); window.history.back();</script>';
+                  </script>';
+        } else {
+            echo '<script>
+                    alert("Error: Unable to delete the item.");
+                    window.location.href = "inventoryTable.php";
+                  </script>';
+        }
+
+        $stmt->close();
+        $con->close();
+    
+} else {
+    // Redirect back if deleteId is not set
+    header("Location: inventoryTable.php");
+    exit();
 }
 ?>

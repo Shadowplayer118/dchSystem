@@ -1,5 +1,120 @@
+.controls{
+
+    position: relative;
+    bottom: 520px;
+    left: 200px;
+    width: 500px;
+    z-index: 1;
+}
+
+.table-container{
+    position: relative;
+    bottom: 480px;
+    left: 155px;
+    right: 100px;
+    background-color: aliceblue;
+    border-radius: 10px;
+    height: 400px;
+  
+}
+
+.table-head th{
+    background-color: rgb(43, 43, 90);
+    color: aliceblue;
+}
+
+.search-bar{
+    position: relative;
+    left: 150px;
+    top: 10px;
+}
+
+.search-bar input{
+    position: relative;
+    left: 100px;
+  
+}
+
+.searchBox{
+    position: relative;
+    top: 30px;
+}
 
 
+
+.search-btn{
+    position: relative;
+    top: 67px;
+}
+
+.title{
+    position: relative;
+    top: 100px;
+}
+
+
+.formContainer{
+    background-color: red;
+}
+
+.add_form{  
+    display:flex;
+    flex-wrap: wrap;
+    max-width: 600px;
+    max-height: 430px;
+    justify-content:baseline;
+    align-items: center;
+    background-color: rgb(27, 34, 73);
+    padding: 20px;
+    border-radius: 10px;
+    overflow: auto;
+    margin-left: 250px;
+    color: aliceblue;
+    position: relative;
+    bottom: 50px;
+    
+ 
+}
+
+.form-control{
+    margin: 8px;
+    font-size: 15px;
+    width: 250px;
+
+}   
+
+.addButtons{
+    margin-right: 385px;
+    margin-top: 10px;
+}
+
+.addButtons button{
+    width: 70px;
+    height: 30px;
+}
+
+
+
+
+
+
+
+/* .add_form label{
+    margin: 8px;
+    font-size: 15px;
+}
+
+.add_form input{
+    width: 300px;
+    height: 20px;
+    margin: 8px;
+} */
+
+/* .search-bar button{
+    background-color: blue;
+} */
+
+/* 
 .table-container{
     position: relative;
     left: 70px;
@@ -42,9 +157,9 @@
     position: relative;
     left: 250px;
     bottom: 440px;
-}
+} */
 
-
+/* 
 .addBtn{
     background-color:aliceblue;
     color: rgb(34, 45, 57) ;
@@ -108,6 +223,11 @@ h3{
     width:230px;
     border-radius: 20px 20px 0px 0px;
     padding-left: 15px;
+} */
+
+/* 
+.container{
+    width: 1000px;
 }
 
 .form-group input {
@@ -120,7 +240,7 @@ border: 0px;
 
 .fill-form{
    
-    width: 310px;
+    width: 1000px;
    
     position: relative;
     left: 300px;
@@ -148,15 +268,7 @@ border: 0px;
     
 }
 
-/* div .add_form{
-    background-color: red;
-    width: 500px;
-    text-align: center;
-} */
 
-/* .form-group label{
-    font-size: large;
-} */
 
 .update_form{
     background-color: rgba(12, 31, 52, 0.592);
@@ -173,8 +285,8 @@ border: 0px;
 }
 
 .add_form{
-    width: 310px;
-   
+    width: 600px;
+    justify-content: baseline;
     position: relative;
     left: 300px;
     bottom: 209px;
@@ -182,18 +294,15 @@ border: 0px;
     padding: 5px;
     border-radius: 5px;
     height: 500px;
-    width: 300px;
     -ms-flex-align: start;
     position: absolute;
      top: 10px;
+     z-index: -1;
 
 }
 
 .add_form label{
-    font-size: 13px;
-    color: aliceblue;
-    position: relative;
-    top: 8px;
+    
 }
 
 .image_box{
@@ -239,3 +348,9 @@ color: aliceblue;
     h1{
         color: aliceblue;
     }
+ 
+
+                                 
+    .addButtons{
+        background-color:red;
+    } */

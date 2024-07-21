@@ -16,6 +16,7 @@ $itemDesc_2 = $row['itemDesc_2'];
 $itemDesc_3 = $row['itemDesc_3'];
 $price = $row['price'];
 $units = $row['units'];
+$location = $row['location'];
 $totalstockValue = $row['totalstockValue'];
 
 if (isset($_POST['submit'])) {
@@ -28,6 +29,7 @@ if (isset($_POST['submit'])) {
     $itemDesc_3 = $_POST['itemDesc_3'];
     $price = $_POST['price'];
     $units = $_POST['units'];
+    $location = $_POST['location'];
     $totalstockValue = floatval($price) * intval($units);
 
     // Check if a new image is uploaded
@@ -44,7 +46,7 @@ if (isset($_POST['submit'])) {
         $image = $finalFilename;
     }
 
-    $sql = "UPDATE inventory2 SET itemNumber = '$itemNumber', itemCode = '$itemCode', brand = '$brand', category = '$category', itemDesc_1 = '$itemDesc_1', itemDesc_2 = '$itemDesc_2', itemDesc_3 = '$itemDesc_3', price = '$price', units = '$units', totalstockValue = '$totalstockValue', image = '$image' WHERE inventory_Id = $id";
+    $sql = "UPDATE inventory2 SET location = '$location',itemNumber = '$itemNumber', itemCode = '$itemCode', brand = '$brand', category = '$category', itemDesc_1 = '$itemDesc_1', itemDesc_2 = '$itemDesc_2', itemDesc_3 = '$itemDesc_3', price = '$price', units = '$units', totalstockValue = '$totalstockValue', image = '$image' WHERE inventory_Id = $id";
 
     $result = mysqli_query($con, $sql);
     if ($result) {
@@ -166,6 +168,14 @@ if (isset($_POST['submit'])) {
             <input type="text" class="form-control" placeholder="Enter item units" name="units"
                    autocomplete="off" value="<?= $units ?>">
         </div>
+
+        <div class="form-group">
+            <label>Item Location</label>
+            <br>
+            <input type="text" class="form-control" placeholder="Enter item Location" name="location"
+                   autocomplete="off" value="<?= $location?>">
+        </div>
+
         <br>
         <button name="submit" class="btn btn-primary">Update</button>
         <a href="inventoryTable.php" class="btn btn-danger">Cancel</a>
