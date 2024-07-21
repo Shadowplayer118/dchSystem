@@ -55,8 +55,12 @@ if(isset($_POST['submit'])){
     <form method="post" enctype="multipart/form-data">
         <div class="container my-5">
             <h1>Add Inventory</h1>
+
+
             <div class="form-group">
-                <label for="image">Select Image:</label>
+                
+            <div class="image_box">
+            <label for="image">Select Image:</label>
                 <img id="preview" src="#" alt="Image Preview" style="display: none; max-width: 200px; max-height: 200px;">
                 <br>
                 <input type="file" id="image" name="image" onchange="previewImage(event)">
@@ -74,10 +78,16 @@ if(isset($_POST['submit'])){
                         reader.readAsDataURL(input.files[0]);
                     }
                 </script>
+
+            </div>
+           
+
+                <div class="add_form">
                 <label>Item Number</label>
                 <input type="text" class="form-control" placeholder="Enter item number" name="itemNumber" autocomplete="off">
 
                 <div class="form-group">
+
                     <label>Item Code</label>
                     <input type="text" class="form-control" placeholder="Enter item item code" name="itemCode" autocomplete="off">
 
@@ -110,7 +120,10 @@ if(isset($_POST['submit'])){
                                                 <input type="text" class="form-control" placeholder="Enter item units" name="units" autocomplete="off">
 
                                                 <br>
-                                                <button name="submit" class="btn btn-primary">Submit</button> <button name="cancel" class="btn btn-danger" onclick="closeTab()">Cancel</button>
+                                                <button name="submit" class="btn btn-primary submit">Submit</button> <button name="cancel" class="btn btn-danger cancel" onclick="closeTab()">Cancel</button>
+
+                </div>
+                
                                                 <script>
                                                     function closeTab() {
                                                         window.close();

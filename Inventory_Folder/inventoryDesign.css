@@ -128,6 +128,7 @@ border: 0px;
     background-color: rgba(12, 31, 52, 0.436);
     padding: 5px;
     border-radius: 5px;
+    height: 500px
 }
 
 .fill-form label{
@@ -147,3 +148,94 @@ border: 0px;
     
 }
 
+/* div .add_form{
+    background-color: red;
+    width: 500px;
+    text-align: center;
+} */
+
+/* .form-group label{
+    font-size: large;
+} */
+
+.update_form{
+    background-color: rgba(12, 31, 52, 0.592);
+    width: 300px;
+   -ms-flex-align: start;
+   position: absolute;
+    top: 10px;
+}
+
+
+.update_form button{
+
+
+}
+
+.add_form{
+    width: 310px;
+   
+    position: relative;
+    left: 300px;
+    bottom: 209px;
+    background-color: rgba(12, 31, 52, 0.592);
+    padding: 5px;
+    border-radius: 5px;
+    height: 500px;
+    width: 300px;
+    -ms-flex-align: start;
+    position: absolute;
+     top: 10px;
+
+}
+
+.add_form label{
+    font-size: 13px;
+    color: aliceblue;
+    position: relative;
+    top: 8px;
+}
+
+.image_box{
+   
+    width: 200px;
+    position: absolute;
+    right: 460px;
+}
+
+.image_box label{
+    font-size: 13px;
+    color: aliceblue;
+}
+
+
+.image_box input{
+    font-size: 13px;
+    color: aliceblue;
+}
+
+
+.add_form button{
+    
+    border: 0px;
+    width: 50px;
+    height: 30px;
+    border-radius: 3px;
+    position: relative;
+    top: 8px;
+}
+
+.add_form .submit{
+background-color: rgb(51, 51, 218);
+color: aliceblue;
+}
+
+.add_form .cancel{
+    background-color: rgb(202, 41, 41);
+    color: aliceblue;
+    }
+
+
+    h1{
+        color: aliceblue;
+    }
