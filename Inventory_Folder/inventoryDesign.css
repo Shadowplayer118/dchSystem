@@ -1,20 +1,23 @@
 .controls{
 
     position: relative;
-    bottom: 520px;
+   
     left: 200px;
     width: 500px;
+    /* background-color: red; */
     z-index: 1;
+    bottom: 350px;
 }
 
 .table-container{
     position: relative;
-    bottom: 480px;
+    bottom: 340px;
     left: 155px;
     right: 100px;
     background-color: aliceblue;
     border-radius: 10px;
     height: 400px;
+
   
 }
 
@@ -23,7 +26,7 @@
     color: aliceblue;
 }
 
-.search-bar{
+/* .search-bar{
     position: relative;
     left: 150px;
     top: 10px;
@@ -38,7 +41,6 @@
 .searchBox{
     position: relative;
     top: 30px;
-    width: 400px;
 }
 
 
@@ -46,7 +48,7 @@
 .search-btn{
     position: relative;
     top: 67px;
-}
+} */
 
 .title{
     position: relative;

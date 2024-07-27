@@ -74,16 +74,6 @@ if (isset($_POST['submit'])) {
             integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
             crossorigin="anonymous"></script>
     <title>Update Inventory</title>
-
-    <style>
-    #preview {
-        width: 200px;
-        height: 200px;
-        object-fit: cover;
-        display: block;
-    }
-</style>
-
 </head>
 
 
