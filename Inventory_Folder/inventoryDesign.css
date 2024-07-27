@@ -38,6 +38,7 @@
 .searchBox{
     position: relative;
     top: 30px;
+    width: 400px;
 }
 
 
@@ -71,10 +72,69 @@
     margin-left: 250px;
     color: aliceblue;
     position: relative;
-    bottom: 50px;
+    bottom: 250px;
     
  
 }
+
+.edit-form{  
+    display:flex;
+    flex-wrap: wrap;
+    max-width: 550px;
+    max-height: 430px;
+    justify-content:baseline;
+    align-items: center;
+    background-color: rgb(27, 34, 73);
+    padding: 20px;
+    border-radius: 10px;
+    overflow: auto;
+    margin-left: 250px;
+    color: aliceblue;
+    position: relative;
+    bottom: 230px;
+    /* padding-bottom: 5000px; */
+ 
+}
+
+.fill-form{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.btn-update{
+    background-color: blue;
+    text-decoration: none;
+    border: 0cap;
+    font-size: 20px;
+    color: wheat;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+
+}
+
+.btn-update:hover{
+    background-color: rgb(35, 35, 138);
+    cursor: pointer;
+}
+
+
+.btn-cancel{
+    background-color: red;
+    text-decoration: none;
+    color: wheat;
+    font-size: 20px;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.btn-cancel:hover{
+    background-color:rgb(150, 28, 28);
+    cursor: pointer;
+}
+
+
 
 .form-control{
     margin: 8px;

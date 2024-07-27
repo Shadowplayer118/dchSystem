@@ -7,8 +7,8 @@ unset($filterValue);
 if (isset($_GET['search'])) {   
     $filterValue = $_GET['search'];
     // $sql = "SELECT * FROM inventory2 WHERE CONCAT(brand, category, itemCode, itemNumber, itemDesc_1, itemDesc_2, itemDesc_3) LIKE '%$filterValue%' ORDER BY inventory_Id DESC";
-    $sql = "SELECT * FROM inventory2  WHERE CONCAT(brand, category, itemCode, itemNumber, itemDesc_1, itemDesc_2, itemDesc_3) LIKE '%FLUIDS%' ORDER BY inventory_Id DESC";
-    $sql = "SELECT * FROM inventory2  WHERE CONCAT(brand,category,itemCode,itemDesc_1, itemDesc_2) LIKE '%$filterValue%' or '% %' ORDER BY inventory_Id DESC";
+    $sql = "SELECT * FROM inventory2  WHERE CONCAT(itemCode, brand, category, itemCode, itemNumber, itemDesc_1, itemDesc_2, itemDesc_3) LIKE '%FLUIDS%' ORDER BY inventory_Id DESC";
+    $sql = "SELECT * FROM inventory2  WHERE CONCAT(itemCode,brand,category,itemCode,itemDesc_1, itemDesc_2) LIKE '%$filterValue%' or '% %' ORDER BY inventory_Id DESC";
 
     unset($filterValue);
     

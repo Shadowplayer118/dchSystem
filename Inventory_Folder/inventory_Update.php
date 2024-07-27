@@ -74,115 +74,138 @@ if (isset($_POST['submit'])) {
             integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
             crossorigin="anonymous"></script>
     <title>Update Inventory</title>
+
+    <style>
+    #preview {
+        width: 200px;
+        height: 200px;
+        object-fit: cover;
+        display: block;
+    }
+</style>
+
 </head>
-<body style="overflow-y: hidden">
-<div class="container my-5">
-    <h1>Update Inventory</h1>
 
 
-    <form method="post" enctype="multipart/form-data">
+<body>
+    
+    <div class="container my-5">
+        <form method="post" enctype="multipart/form-data">
+            <h1>Update Inventory</h1>
+            <div class="form-group">
 
-    <div class="image-holder">
+                <label for="image">Select Image:</label>
+                <img id="preview" src="../images/<?= $image ?>" alt="Image Preview" style="display: block; max-width: 200px; max-height: 200px;">
+                <br>
+                <input type="file" id="image" name="image" onchange="previewImage(event)">
+                <br>
 
-    <label for="image">Select Image:</label>
-        <img id="preview" src="../images/<?= $image ?>" alt="Image Preview" style="display: block; max-width: 200px; max-height: 200px;">
-        <br>
-        <input type="file" id="image" name="image" onchange="previewImage(event)">
-        <br>
-        <script>
-            function previewImage(event) {
-                var input = event.target;
-                var preview = document.getElementById('preview');
-                preview.style.display = 'block';
+                <script>
+                    function previewImage(event) {
+                    var input = event.target;
+                    var preview = document.getElementById('preview');
+                    preview.style.display = 'block';
 
-                var reader = new FileReader();
-                reader.onload = function() {
+                    var reader = new FileReader();
+                    reader.onload = function() {
                     preview.src = reader.result;
-                };
+                    };
 
-                if (input.files && input.files[0]) {
+                    if (input.files && input.files[0]) {
                     reader.readAsDataURL(input.files[0]);
-                } else {
+                    } else {
                     preview.src = "../images/<?= $image ?>";
-                }
-            }
-        </script>
+                    }
+                    }
+                </script>
 
+
+            </div>
+
+            <div class="edit-form">
+
+            
+
+                <div class="fill-form  update_form">
+                <div class="form-group">
+                <label>Item Number</label>
+                <br>
+                <input type="text" class="form-control" placeholder="Enter item number" name="itemNumber"
+                autocomplete="off" value="<?= $itemNumber ?>">
+                </div>
+
+                <div class="form-group">
+                <label>Item Code</label>
+                <br>
+                <input type="text" class="form-control" placeholder="Enter item item code" name="itemCode"
+                autocomplete="off" value="<?= $itemCode ?>">
+                </div>
+
+                <div class="form-group">
+                <label>Item Brand</label>
+                <br>
+                <input type="text" class="form-control" placeholder="Enter item brand" name="brand"
+                autocomplete="off" value="<?= $brand ?>">
+                </div>
+
+                <div class="form-group">
+                <label>Item Category</label>
+                <br>
+                <input type="text" class="form-control" placeholder="Enter item category" name="category"
+                autocomplete="off" value="<?= $category ?>">
+                </div>
+
+                <div class="form-group">
+                <label>Description 1</label>
+                <br>
+                <input type="text" class="form-control" placeholder="Enter item description 1" name="itemDesc_1"
+                autocomplete="off" value="<?= $itemDesc_1 ?>">
+                </div>
+
+                <div class="form-group">
+                <label>Description 2</label>
+                <br>
+                <input type="text" class="form-control" placeholder="Enter item description 2" name="itemDesc_2"
+                autocomplete="off" value="<?= $itemDesc_2 ?>">
+                </div>
+
+                <div class="form-group">
+                <label>Description 3</label>
+                <br>
+                <input type="text" class="form-control" placeholder="Enter item description 3" name="itemDesc_3"
+                autocomplete="off" value="<?= $itemDesc_3 ?>">
+                </div>
+
+                <div class="form-group">
+                <label>Item Price</label>
+                <br>
+                <input type="text" class="form-control" placeholder="Enter item price" name="price"
+                autocomplete="off" value="<?= $price ?>">
+                </div>
+
+                <div class="form-group">
+                <label>Item Units</label>
+                <br>
+                <input type="text" class="form-control" placeholder="Enter item units" name="units"
+                autocomplete="off" value="<?= $units ?>">
+                </div>
+
+                <div class="form-group">
+                <label>Item Location</label>
+                <br>
+                <input type="text" class="form-control" placeholder="Enter item Location" name="location"
+                autocomplete="off" value="<?= $location?>">
+                </div>
+                <br>
+
+                <button name="submit" class="btn btn-primary btn-update">Update</button>
+                <a href="inventoryTable.php" class="btn btn-danger btn-cancel">Cancel</a>
+
+            </div>
+
+        </form>
     </div>
 
-      
-
-
-        <div class="fill-form  update_form">
-        <div class="form-group">
-            <label>Item Number</label>
-            <br>
-            <input type="text" class="form-control" placeholder="Enter item number" name="itemNumber"
-                   autocomplete="off" value="<?= $itemNumber ?>">
-        </div>
-        <div class="form-group">
-            <label>Item Code</label>
-            <br>
-            <input type="text" class="form-control" placeholder="Enter item item code" name="itemCode"
-                   autocomplete="off" value="<?= $itemCode ?>">
-        </div>
-        <div class="form-group">
-            <label>Item Brand</label>
-            <br>
-            <input type="text" class="form-control" placeholder="Enter item brand" name="brand"
-                   autocomplete="off" value="<?= $brand ?>">
-        </div>
-        <div class="form-group">
-            <label>Item Category</label>
-            <br>
-            <input type="text" class="form-control" placeholder="Enter item category" name="category"
-                   autocomplete="off" value="<?= $category ?>">
-        </div>
-        <div class="form-group">
-            <label>Description 1</label>
-            <br>
-            <input type="text" class="form-control" placeholder="Enter item description 1" name="itemDesc_1"
-                   autocomplete="off" value="<?= $itemDesc_1 ?>">
-        </div>
-        <div class="form-group">
-            <label>Description 2</label>
-            <br>
-            <input type="text" class="form-control" placeholder="Enter item description 2" name="itemDesc_2"
-                   autocomplete="off" value="<?= $itemDesc_2 ?>">
-        </div>
-        <div class="form-group">
-            <label>Description 3</label>
-            <br>
-            <input type="text" class="form-control" placeholder="Enter item description 3" name="itemDesc_3"
-                   autocomplete="off" value="<?= $itemDesc_3 ?>">
-        </div>
-        <div class="form-group">
-            <label>Item Price</label>
-            <br>
-            <input type="text" class="form-control" placeholder="Enter item price" name="price"
-                   autocomplete="off" value="<?= $price ?>">
-        </div>
-        <div class="form-group">
-            <label>Item Units</label>
-            <br>
-            <input type="text" class="form-control" placeholder="Enter item units" name="units"
-                   autocomplete="off" value="<?= $units ?>">
-        </div>
-
-        <div class="form-group">
-            <label>Item Location</label>
-            <br>
-            <input type="text" class="form-control" placeholder="Enter item Location" name="location"
-                   autocomplete="off" value="<?= $location?>">
-        </div>
-
-        <br>
-        <button name="submit" class="btn btn-primary">Update</button>
-        <a href="inventoryTable.php" class="btn btn-danger">Cancel</a>
-        
-        </div>
-       
-    </form>
-</div>
 </body>
+
 </html>

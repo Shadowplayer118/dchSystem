@@ -3,11 +3,15 @@ include '../inventoryDb_connect.php';
 
 if(isset($_POST['submit'])){
     // Process the image upload
-    $image_name = $_FILES['image']['name'];
-    $image_tmp = $_FILES['image']['tmp_name'];
-    $image_folder = '../Images/'.$image_name;
+    if (!empty($_FILES['image']['name'])) {
+        $image_name = $_FILES['image']['name'];
+        $image_tmp = $_FILES['image']['tmp_name'];
+        $image_folder = '../Images/'.$image_name;
 
-    move_uploaded_file($image_tmp, $image_folder);
+        move_uploaded_file($image_tmp, $image_folder);
+    } else {
+        $image_name = 'gear.jpg'; // Default image
+    }
 
     // Process the other form data
     $itemNumber = $_POST['itemNumber'];
@@ -23,8 +27,8 @@ if(isset($_POST['submit'])){
     $totalstockValue = floatval($price) * intval($units);
 
     // Insert data into the database
-    $sql = "INSERT INTO inventory2 (location,requested,ordered,itemNumber, itemCode, brand, category, itemDesc_1, itemDesc_2, itemDesc_3, price, units, totalstockValue, image)
-            VALUES ($location,'None','None','$itemNumber', '$itemCode', '$brand', '$category', '$itemDesc_1', '$itemDesc_2', '$itemDesc_3', '$price', '$units', '$totalstockValue', '$image_name')";
+    $sql = "INSERT INTO inventory2 (location, requested, ordered, itemNumber, itemCode, brand, category, itemDesc_1, itemDesc_2, itemDesc_3, price, units, totalstockValue, image)
+            VALUES ('$location', 'None', 'None', '$itemNumber', '$itemCode', '$brand', '$category', '$itemDesc_1', '$itemDesc_2', '$itemDesc_3', '$price', '$units', '$totalstockValue', '$image_name')";
 
     $result = mysqli_query($con, $sql);
     if($result){
@@ -50,10 +54,18 @@ integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEw
 integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
 crossorigin="anonymous"></script>
 
-
 <title>Add Inventory</title>
-</head>
 
+<style>
+    #preview {
+        width: 200px;
+        height: 200px;
+        object-fit: cover;
+        display: block;
+    }
+</style>
+
+</head>
 
 <body>
 
@@ -63,80 +75,84 @@ crossorigin="anonymous"></script>
     <h1>Add Inventory</h1>
     <div class="form-group">
         <label for="image">Select Image:</label>
-        <img id="preview" src="#" alt="Image Preview" style="display: none; max-width: 200px; max-height: 200px;">
-    <br>
+        <img id="preview" src="../Images/gear.jpg" alt="Image Preview">
+        <br>
         <input type="file" id="image" name="image" onchange="previewImage(event)">
-    <br>
+        <br>
 
         <script>
             function previewImage(event) {
-            var input = event.target;
-            var preview = document.getElementById('preview');
-            preview.style.display = 'block';
-
-            var reader = new FileReader();
-            reader.onload = function() {
-            preview.src = reader.result;
-            };
-            reader.readAsDataURL(input.files[0]);
+                var input = event.target;
+                var preview = document.getElementById('preview');
+                
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function(e) {
+                        preview.src = e.target.result;
+                    };
+                    reader.readAsDataURL(input.files[0]);
+                } else {
+                    // Show default image if no file is selected
+                    preview.src = '../Images/gear.jpg';
+                }
             }
         </script>
 
+        <div class="add_form">
+            <div class="form-group">
+                <label>Item Number</label>
+                <input type="number" class="form-control" placeholder="Enter item number" name="itemNumber" autocomplete="off">
+            </div>
+            <div class="form-group">
+                <label>Item Code</label>
+                <input type="text" class="form-control" placeholder="Enter item code" name="itemCode" autocomplete="off">
+            </div>
+            <div class="form-group">
+                <label>Item Brand</label>
+                <input type="text" class="form-control" placeholder="Enter item brand" name="brand" autocomplete="off">
+            </div>
+            <div class="form-group">
+                <label>Item Category</label>
+                <input type="text" class="form-control" placeholder="Enter item category" name="category" autocomplete="off">
+            </div>
+            <div class="form-group">
+                <label>Description 1</label>
+                <input type="text" class="form-control" placeholder="Enter item description 1" name="itemDesc_1" autocomplete="off">
+            </div>
+            <div class="form-group">
+                <label>Description 2</label>
+                <input type="text" class="form-control" placeholder="Enter item description 2" name="itemDesc_2" autocomplete="off">
+            </div>
+            <div class="form-group">
+                <label>Description 3</label>
+                <input type="text" class="form-control" placeholder="Enter item description 3" name="itemDesc_3" autocomplete="off">
+            </div>
+            <div class="form-group">
+                <label>Item Price</label>
+                <input type="number" class="form-control" placeholder="Enter item price" name="price" autocomplete="off">
+            </div>
+            <div class="form-group">
+                <label>Item Units</label>
+                <input type="number" class="form-control" placeholder="Enter item units" name="units" autocomplete="off">
+            </div>
+            <div class="form-group">
+                <label>Location</label>
+                <input type="text" class="form-control" placeholder="Enter item location" name="location" autocomplete="off">
+            </div>
+            <br>
+            <button name="submit" class="btn btn-primary">Submit</button> 
+            <button name="cancel" class="btn btn-danger" onclick="closeTab()">Cancel</button>
+        </div>
 
-    <div class="add_form">
+        <script>
+            function closeTab() {
+                window.close();
+            }
 
-    <div class="form-group">
-    <label>Item Number</label>
-    <input type="number" class="form-control" placeholder="Enter item number" name="itemNumber" autocomplete="off">
-    </div>
-    <div class="form-group">
-    <label>Item Code</label>
-    <input type="text" class="form-control" placeholder="Enter item item code" name="itemCode" autocomplete="off">
-    </div>
-    <div class="form-group">
-    <label>Item Brand</label>
-    <input type="text" class="form-control" placeholder="Enter item brand" name="brand" autocomplete="off">
-    </div>
-    <div class="form-group">
-    <label>Item Category</label>
-    <input type="text" class="form-control" placeholder="Enter item category" name="category" autocomplete="off">
-    </div>
-    <div class="form-group">
-    <label>Description 1</label>
-    <input type="text" class="form-control" placeholder="Enter item description 1" name="itemDesc_1" autocomplete="off">
-    </div>
-    <div class="form-group">
-    <label>Description 2</label>
-    <input type="text" class="form-control" placeholder="Enter item description 2" name="itemDesc_2" autocomplete="off">
-    </div>
-    <div class="form-group">
-    <label>Description 3</label>
-    <input type="text" class="form-control" placeholder="Enter item description 3" name="itemDesc_3" autocomplete="off">
-    </div>
-    <div class="form-group">
-    <label>Item Price</label>
-    <input type="number" class="form-control" placeholder="Enter item price" name="price" autocomplete="off">
-    </div>
-    <div class="form-group">
-    <label>Item Units</label>
-    <input type="number" class="form-control" placeholder="Enter item units" name="units" autocomplete="off">
-    </div>
-    <div class="form-group">
-    <label>Location</label>
-    <input type="text" class="form-control" placeholder="Enter item location" name="location" autocomplete="off">
-    </div>
-    <br>
-    <button name="submit" class="btn btn-primary">Submit</button> <button name="cancel" class="btn btn-danger" onclick="closeTab()">Cancel</button>
+            
+        </script>
 
-</div>
-
-    <script>
-    function closeTab() {
-    window.close();
-    }
-    </script>
-
-</form>
+    </form>
 </div>
 </body>
 </html>
