@@ -2,7 +2,7 @@
 include '../inventoryDb_connect.php';
 $id = $_GET['updateId'];
 
-$sql = "SELECT  inventory2.inventory_Id,requisition.requisition_id,inventory2.itemDesc_1, inventory2.itemDesc_2, inventory2.itemDesc_3,inventory2.brand,requisition.units, requisition.status,requisition.prepared_by,requisition.received_by,requisition.date_requested
+$sql = "SELECT  inventory2.inventory_Id,requisition.requisition_id,inventory2.itemDesc_1, inventory2.itemDesc_2, inventory2.itemDesc_3,inventory2.brand,requisition.units, requisition.status,requisition.note,requisition.prepared_by,requisition.received_by,requisition.date_requested
 FROM requisition
 INNER JOIN inventory2 ON requisition.inventory_Id = inventory2.inventory_Id
 where requisition_id = $id";
@@ -17,6 +17,7 @@ $itemDesc_3 = $row['itemDesc_3'];
 $itemName = $itemDesc_1.' '.$itemDesc_2.' '.$itemDesc_3;
 $brand = $row['brand'];
 $units = $row['units'];
+$note = $row['note'];
 
 $status = $row['status'];
 $received_by = $row['received_by'];
@@ -29,8 +30,9 @@ if (isset($_POST['submit'])) {
     $received_by = $_POST['received_by'];
     $prepared_by = $_POST['prepared_by'];
     $date_requested = $_POST['date_requested'];
+    $note = $_POST['note'];
 
-    $sql = "UPDATE requisition SET units = $newUnits, received_by = '$received_by', prepared_by = '$prepared_by', date_requested = '$date_requested' WHERE requisition_id = $id";
+    $sql = "UPDATE requisition SET units = $newUnits, received_by = '$received_by', prepared_by = '$prepared_by', date_requested = '$date_requested', note = '$note' WHERE requisition_id = $id";
 
     $result = mysqli_query($con, $sql);
     if ($result) {
@@ -90,6 +92,11 @@ if (isset($_POST['submit'])) {
     <label>Date Ordered</label>
     <input type="date" class="form-control"  placeholder="Enter item brand" name="date_requested" autocomplete = "off"
     value = <?php echo $date_requested;?>>
+
+    <div class="form-group">
+    <label>Note</label>
+    <input type="text" class="form-control"  placeholder="Enter note" name="note" autocomplete = "off"
+    value = <?php echo $note;?>>
 
 
   

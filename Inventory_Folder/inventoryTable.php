@@ -49,8 +49,6 @@ $result = mysqli_query($con, $sql);
 
 <h2>DCH Inventory </h2>
 
-
-
 <div class="header">
 
 
@@ -93,8 +91,6 @@ $result = mysqli_query($con, $sql);
     </div>
 
 </div>
-
-
 
 <div class="controls">
 <h3 class='title'></h3> <br> 
