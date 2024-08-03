@@ -225,6 +225,17 @@ a.links.faq{
     color:white;
 } */
 
+ .export_button{
+    background-color: #007bff;
+    border-radius: 10px;
+    padding:5px;
+    color: aliceblue;
+    border: none;
+    position:relative;
+    left:1065px;
+    bottom:60px;
+ }
+
 
 
 .header{

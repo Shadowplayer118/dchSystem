@@ -24,15 +24,18 @@ $result = mysqli_query($con, $sql);
     <link rel="stylesheet" type="text/css" href="../uniStyle.css">
     <link rel="stylesheet" type="text/css" href="inventoryDesign.css">
     <link rel="stylesheet" type="text/css" href="activity_design.css">
-    <title>Inventory Table</title>
+    <title>Activity</title>
 </head>
 
 <body>
     <!------Side----->
-    <div class="link-container">
+    <!-- <div class="link-container">
 <a href="../HomePage.php"  class="index-link">Home</a>
 <br>
-</div>
+</div> -->
+
+<button onClick = "Close();">Close</button>
+
     <div class="whole-container">
         <h2>DCH Inventory</h2>
 
@@ -160,6 +163,10 @@ $result = mysqli_query($con, $sql);
                     document.execCommand('copy');
                 }
                 alert('Table copied to clipboard!');
+            }
+
+            function Close(){
+                window.close();
             }
     </script>
 

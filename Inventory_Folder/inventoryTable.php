@@ -1,3 +1,74 @@
+
+
+<?php
+    if (isset($_POST['export'])) {
+        exportDatabase();
+    }
+
+    function exportDatabase() {
+        // Database configuration
+        $host = "localhost";
+        $username = "root";
+        $password = "";
+        $database = "dch_inventory_new";
+    
+        // Connect to the database
+        $con = new mysqli($host, $username, $password, $database);
+        if ($con->connect_error) {
+            die("Connection failed: " . $con->connect_error);
+        }
+    
+        // Get the current date and time for the filename
+        $date = date('Y-m-d_H-i-s');
+        
+        // Define the path to the desktop
+        $desktopPath = getenv("HOMEDRIVE") . getenv("HOMEPATH") . '\Desktop'; // For Windows
+        // For Linux/Mac, you can use: $desktopPath = getenv("HOME") . '/Desktop';
+        
+        $backupFile = $desktopPath . "\\dch_inventory_backup_{$date}.sql";
+    
+        // Open the backup file for writing
+        $file = fopen($backupFile, 'w');
+    
+        if ($file === false) {
+            die("Unable to create backup file");
+        }
+    
+        // Get all tables in the database
+        $tables = $con->query("SHOW TABLES");
+        if ($tables === false) {
+            die("Error fetching tables: " . $con->error);
+        }
+    
+        while ($row = $tables->fetch_array()) {
+            $table = $row[0];
+    
+            // Get the table creation statement
+            $createTable = $con->query("SHOW CREATE TABLE $table")->fetch_array();
+            fwrite($file, "\n\n" . $createTable[1] . ";\n\n");
+    
+            // Get the table data
+            $rows = $con->query("SELECT * FROM $table");
+            while ($rowData = $rows->fetch_assoc()) {
+                $columns = array_keys($rowData);
+                $values = array_map([$con, 'real_escape_string'], array_values($rowData));
+                $columns = '`' . implode('`, `', $columns) . '`';
+                $values = "'" . implode("', '", $values) . "'";
+                fwrite($file, "INSERT INTO `$table` ($columns) VALUES ($values);\n");
+            }
+        }
+    
+        // Close the file
+        fclose($file);
+    
+        // Close the database connection
+        $con->close();
+    
+        echo "Backup created successfully. File: $backupFile";
+    }
+    
+    ?>
+
 <?php
 include '../inventoryDb_connect.php';
 
@@ -52,6 +123,11 @@ $result = mysqli_query($con, $sql);
 
 <a href="../Activity/activity_table.php" target="_blank" class="activity-today">Activity</a>
 <div class="header">
+
+<form method="POST" action="">
+        <button type="submit" name="export" value="Export" class = "export_button">Export Database</button>
+    </form>
+
 
 
 
@@ -264,9 +340,13 @@ $result = mysqli_query($con, $sql);
         }
     </script>
 
+
+
   
 
     </div>
   
 </body>
 </html>
+
+

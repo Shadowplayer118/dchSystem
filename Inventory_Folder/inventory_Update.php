@@ -45,8 +45,18 @@
 
     $result = mysqli_query($con, $sql);
     if ($result) {
-        echo "<script>window.close();</script>";
-        exit();
+        
+        $sql2 = "INSERT INTO activity(query, date_performed) VALUES ('" . mysqli_real_escape_string($con, $sql) . "', NOW())";
+
+        if (mysqli_query($con, $sql2)) {
+            echo "<script>alert('Data Updated');</script>";
+            echo "<script>console.log(`" . addslashes($sql) . "`);</script>";
+            // Optionally, close the window
+            echo "<script>window.close();</script>";
+            exit();
+        } else {
+            echo 'Error logging activity: ' . mysqli_error($con);
+        }
     } 
     
     else {
