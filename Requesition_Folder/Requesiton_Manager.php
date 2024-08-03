@@ -46,9 +46,10 @@ $result = mysqli_query($con, $sql);
 <body>
 
 <h2>DCH Inventory </h2>
+<a href="../Activity/activity_table.php" target="_blank" class="activity-today">Activity</a>
+
 <div class="header">
    
-
     <div class="link-container">
     <a href="../HomePage.php"  class="index-link">Home</a>
     <br>
