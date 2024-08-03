@@ -44,14 +44,15 @@ $result = mysqli_query($con, $sql);
                 <input id="search" type="date" class="searchBox" name="search" value="<?php if(isset($_GET['search'])){echo $_GET['search'];}?>" class="search-box" placeholder="Search data" autocomplete="off"> 
             </form>
             <button onClick="Hide()">Format to Copy</button>
+            <button onClick="copyTable()">Copy Table</button>
         </div>
 
         <!------Center----->
         <div class="act-container">
-            <table class="inventory-table">
+            <table class="inventory-table" id = "inventory-table">
                 <thead class="table-head">
                     <tr>
-                        <th scope="col">Query</th>
+                        <th scope="col">/*---Query--*/</th>
                         <th scope="col" id="date_col">Date</th>
                     </tr>
                 </thead>
@@ -140,6 +141,26 @@ $result = mysqli_query($con, $sql);
         function clearSearch() {
         document.getElementById("search").value = "";
         }
+
+
+        function copyTable() {
+                var table = document.getElementById("inventory-table");
+                var range, sel;
+                if (document.createRange) { // modern browsers
+                    range = document.createRange();
+                    range.selectNode(table);
+                    sel = window.getSelection();
+                    sel.removeAllRanges();
+                    sel.addRange(range);
+                    document.execCommand('copy');
+                } else if (document.selection) { // IE
+                    range = document.body.createTextRange();
+                    range.moveToElementText(table);
+                    range.select();
+                    document.execCommand('copy');
+                }
+                alert('Table copied to clipboard!');
+            }
     </script>
 
 
