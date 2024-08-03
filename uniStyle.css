@@ -30,10 +30,8 @@ body{
         color: #fff;
         border-radius: 0.25rem;
         text-decoration: none;
-        height: 40px; 
-        align-content: center;
-
-    
+        height: 30px; 
+        align-content: center;    
 }
 
 
@@ -55,9 +53,8 @@ body{
     color: #fff;
     border-radius: 0.25rem;
     text-decoration: none;
-    height: 40px; 
+    height: 30px; 
     align-content: center;
-
 
 }
 
@@ -388,10 +385,6 @@ thead th {
     max-height: 1000px; 
     overflow-y: auto;  
     width: 90%;
-
-    /* position: relative;
-
-    bottom: 300px; */
 }
 
 .header{
@@ -467,3 +460,15 @@ h2{
     /* .mainBody .table-class::-webkit-scrollbar {
         display: none;
     } */
+
+    .activity-today{
+        background-color: rgb(237, 174, 15);
+        padding: 5px;
+        text-decoration: none;
+        font-size: small;
+        color: aliceblue;
+        border-radius: 10px;
+        position: relative;
+        left: 1200px;
+        top: 10px;
+    }

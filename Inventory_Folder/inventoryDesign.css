@@ -1,27 +1,59 @@
-.controls{
-
+.container{
+    display: flex;
+    flex-direction: column;
     position: relative;
-   
-    left: 200px;
-    width: 500px;
-    /* background-color: red; */
-    z-index: 1;
-    bottom: 350px;
+    left: 150px;
+    bottom: 390px;
+    margin: 0px;
 }
 
+.controls{
+    display: flex;
+    padding: 10px;
+    
+    }
+
+    .controls *{
+        margin-right: 10px;
+    }
+
+
+    .searchBox{
+
+        border-radius: 5px;
+        border-color: rgb(34, 45, 57) ;
+        width: 300px;
+        height: 30px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 19px;
+        box-shadow: -3px 3px 5px rgba(12, 31, 52, 0.436);
+    
+    }
+
+.inventory-table{
+        border-collapse: collapse;
+    }
+
 .table-container{
-    position: relative;
-    bottom: 340px;
-    left: 155px;
-    right: 100px;
+    
     background-color: aliceblue;
     border-radius: 10px;
     height: 400px;
 }
 
 .table-head th{
+
+
     background-color: rgb(43, 43, 90);
     color: aliceblue;
+}
+
+
+/* 
+
+
+.table-container{
+    background-color: blue;
 }
 
 /* .search-bar{
@@ -47,7 +79,7 @@
     position: relative;
     top: 67px;
 } */
-
+/* 
 .title{
     position: relative;
     top: 100px;
@@ -57,11 +89,13 @@
 .formContainer{
     background-color: red;
 }
+*/
+
 
 .add_form{  
     display:flex;
     flex-wrap: wrap;
-    max-width: 600px;
+    max-width: 500px;
     max-height: 430px;
     justify-content:baseline;
     align-items: center;
@@ -92,7 +126,6 @@
     color: aliceblue;
     position: relative;
     bottom: 230px;
-    /* padding-bottom: 5000px; */
  
 }
 
@@ -157,7 +190,11 @@
 
 
 
+.update-container{
+}
 
+.add-container{
+}
 
 /* .add_form label{
     margin: 8px;
@@ -260,19 +297,7 @@
     cursor: pointer;
 }
 
-.searchBox{
-    position:absolute;
-    border-radius: 5px;
-    border-color: rgb(34, 45, 57) ;
-    width: 300px;
-    height: 30px;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 19px;
-    left: 600px;
-    top: 79px;
-    box-shadow: -3px 3px 5px rgba(12, 31, 52, 0.436);
 
-}
 
 h3{
     position: relative;

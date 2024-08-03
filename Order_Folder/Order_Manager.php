@@ -3,13 +3,6 @@ include '../inventoryDb_connect.php';
 
 $filterValue = '';
 
-// if (isset($_GET['filter'])) {
-//     $filterValue = $_GET['filter'];
-//     $sql = "SELECT * FROM orders WHERE brand LIKE '%$filterValue%' OR category LIKE '%$filterValue%' OR itemCode LIKE '%$filterValue%' OR itemNumber LIKE '%$filterValue%'";
-// } else {
-//     $sql = "SELECT * FROM orders";
-// }
-
 $sql = "SELECT inventory2.inventory_Id, orders.order_id,inventory2.itemDesc_1,inventory2.itemDesc_2,inventory2.itemDesc_3,inventory2.brand,
 supplier.agent_firstname,supplier.agent_middlename,supplier.agent_lastname,price_list.dealer_price,orders.units,orders.total_price,orders.status, orders.placed_by,orders.date_ordered FROM orders 
 INNER JOIN price_list ON orders.price_list_Id = price_list.price_list_Id
@@ -24,13 +17,13 @@ $result = mysqli_query($con, $sql);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"/>
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"/> -->
           <link rel="stylesheet" type="text/css" href="../uniStyle.css">
           <link rel="stylesheet" type="text/css" href="OrderDesign.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-            crossorigin="anonymous"></script>
+            crossorigin="anonymous"></script> -->
 
     <title>Manage Orders</title>
 
