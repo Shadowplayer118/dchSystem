@@ -6,10 +6,10 @@ unset($filterValue);
 if (isset($_GET['search'])) {   
     $filterValue = $_GET['search'];
     // Example: Adjust this query to match your requirements
-    $sql = "SELECT * FROM activity WHERE date_performed LIKE '%$filterValue%' ORDER BY activity_Id DESC";
+    $sql = "SELECT * FROM activity WHERE date_performed LIKE '%$filterValue%'";
     unset($filterValue);
 } else {
-    $sql = "SELECT * FROM activity ORDER BY activity_Id DESC";
+    $sql = "SELECT * FROM activity";
     unset($filterValue);
 }
 

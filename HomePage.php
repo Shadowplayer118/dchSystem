@@ -82,7 +82,7 @@ if ($result) {
 <body style="overflow-y: hidden">
 <h2 class = "title">DCH Inventory </h2>
     
-<a href="../Activity/activity_table.php" target="_blank" class="activity-today">Activity</a>
+<a href="Activity/activity_table.php" target="_blank" class="activity-today">Activity</a>
 
     <div class="header">
 
