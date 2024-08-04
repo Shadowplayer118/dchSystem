@@ -246,6 +246,7 @@ a.links.faq{
 .link-container{
     display: inline-block;
     margin-left: 30px;
+    
 }
 
 .box-row{
@@ -427,13 +428,13 @@ font-size: 15px;
     margin-top: 20px;
     position: relative;
     right: 16px;
-    top: 20px;
+    top: -20px;
     text-align: center;
 }
 
 .header .index-link:last-child {
     position: relative;
-    top: 50px;
+    top: 30px;
     color: red;
     font-weight: bolder;
  

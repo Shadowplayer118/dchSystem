@@ -83,9 +83,9 @@ unset($filterValue);
 
 if (isset($_GET['search'])) {   
     $filterValue = $_GET['search'];
-    // $sql = "SELECT * FROM inventory2 WHERE CONCAT(brand, category, itemCode, itemNumber, itemDesc_1, itemDesc_2, itemDesc_3) LIKE '%$filterValue%' ORDER BY inventory_Id DESC";
-    $sql = "SELECT * FROM inventory2  WHERE CONCAT(itemCode, brand, category, itemCode, itemNumber, itemDesc_1, itemDesc_2, itemDesc_3) LIKE '%FLUIDS%' ORDER BY inventory_Id DESC";
-    $sql = "SELECT * FROM inventory2  WHERE CONCAT(itemCode,brand,category,itemCode,itemDesc_1, itemDesc_2) LIKE '%$filterValue%' or '% %' ORDER BY inventory_Id DESC";
+    // $sql = "SELECT * FROM inventory_warehouse WHERE CONCAT(brand, category, itemCode, itemNumber, itemDesc_1, itemDesc_2, itemDesc_3) LIKE '%$filterValue%' ORDER BY inventory_Id DESC";
+    $sql = "SELECT * FROM inventory_warehouse  WHERE CONCAT(itemCode_warehouse, brand_warehouse, category_warehouse, itemCode_warehouse, itemNumber_warehouse, itemDesc_1_warehouse, itemDesc_2_warehouse, itemDesc_3_warehouse) LIKE '%FLUIDS%' ORDER BY inventory_warehouse_Id DESC";
+    $sql = "SELECT * FROM inventory_warehouse  WHERE CONCAT(itemCode_warehouse,brand_warehouse,category_warehouse,itemCode_warehouse,itemDesc_1_warehouse, itemDesc_2_warehouse) LIKE '%$filterValue%' or '% %' ORDER BY inventory_warehouse_Id DESC";
 
     unset($filterValue);
     
@@ -93,7 +93,7 @@ if (isset($_GET['search'])) {
 } 
 
 else {
-    $sql = "SELECT * FROM inventory2 ORDER BY inventory_Id DESC";
+    $sql = "SELECT * FROM inventory_warehouse ORDER BY inventory_warehouse_Id DESC";
     unset($filterValue);
    
     
@@ -117,7 +117,7 @@ $result = mysqli_query($con, $sql);
             crossorigin="anonymous"></script> -->
 
  
-<title>Inventory Table</title>
+<title>WAREHOUSE INVENTORY</title>
 
     
 </head>
@@ -142,12 +142,11 @@ $result = mysqli_query($con, $sql);
 <a href="../HomePage.php"  class="index-link">Home</a>
 <br>
 </div>
-
 <div class="link-container">
 <a href="../Inventory_Folder_Warehouse/inventoryTable.php"  class="index-link">Warehouse Inventory</a>
 <br>
 
-</div>
+</div>  
 
 <div class="link-container">
 <a href="../Inventory_Folder/inventoryTable.php"  class="index-link">Store Inventory</a>
@@ -190,7 +189,7 @@ $result = mysqli_query($con, $sql);
 
 
     
-<h2 style = "background-color:red; width:fit-content; padding:5px; border-radius:10px;">STORE INVENTORY</h2>
+<h2 style = "background-color:blue; width:fit-content; padding:5px; border-radius:10px;">WAREHOUSE INVENTORY</h2>
 
 
 
@@ -240,22 +239,22 @@ $result = mysqli_query($con, $sql);
                 <?php
                     if ($result) {
                         while ($row = mysqli_fetch_assoc($result)) {
-                        $image = $row['image'];
-                        $inventory_Id = $row['inventory_Id'];
-                        $itemNumber = $row['itemNumber'];
-                        $itemCode = $row['itemCode'];
-                        $brand = $row['brand'];
-                        $category = $row['category'];
-                        $itemDesc_1 = $row['itemDesc_1'];
-                        $itemDesc_2 = $row['itemDesc_2'];
-                        $itemDesc_3 = $row['itemDesc_3'];
-                        $price = $row['price'];
-                        $units = $row['units'];
-                        $totalstockValue = $row['totalstockValue'];
-                        $requested = $row['requested'];
-                        $ordered = $row['ordered'];
-                        $active = $row['active'];
-                        $location = $row['location'];
+                        $image = $row['image_warehouse'];
+                        $inventory_Id = $row['inventory_warehouse_Id'];
+                        $itemNumber = $row['itemNumber_warehouse'];
+                        $itemCode = $row['itemCode_warehouse'];
+                        $brand = $row['brand_warehouse'];
+                        $category = $row['category_warehouse'];
+                        $itemDesc_1 = $row['itemDesc_1_warehouse'];
+                        $itemDesc_2 = $row['itemDesc_2_warehouse'];
+                        $itemDesc_3 = $row['itemDesc_3_warehouse'];
+                        $price = $row['price_warehouse'];
+                        $units = $row['units_warehouse'];
+                        $totalstockValue = $row['totalstockValue_warehouse'];
+                        $requested = $row['requested_warehouse'];
+                        $ordered = $row['ordered_warehouse'];
+                        $active = $row['active_warehouse'];
+                        $location = $row['location_warehouse'];
 
                         $requestedLink = $requested === "Pending" ? '<a href="../Requesition_Folder/Requesiton_Manager.php"  class = "pend">Pending</a>' : $requested;
                         $orderedLink = $ordered === "Pending" ? '<a href="../Order_Folder/Order_Manager.php" class = "pend">Pending</a>' : $ordered;

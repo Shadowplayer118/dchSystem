@@ -25,7 +25,7 @@ include '../inventoryDb_connect.php';
 
 
 <body>
-<h2>DCH Inventory </h2>
+<h2>STORE INVENTORY</h2>
 <a href="../Activity/activity_table.php" target="_blank" class="activity-today">Activity</a>
 
 <div class="header">
@@ -35,12 +35,17 @@ include '../inventoryDb_connect.php';
     <a href="../HomePage.php"  class="index-link">Home</a>
     <br>
     </div>
+    <div class="link-container">
+<a href="../Inventory_Folder_Warehouse/inventoryTable.php"  class="index-link">Warehouse Inventory</a>
+<br>
+
+</div>
 
 <div class="link-container">
-    <a href="../Inventory_Folder/inventoryTable.php"  class="index-link">Inventory</a>
-    <br>
-    
-    </div>
+<a href="../Inventory_Folder/inventoryTable.php"  class="index-link">Store Inventory</a>
+<br>
+
+</div>
 
 <div class="link-container">
 <a href="../Order_Folder/Order_Manager.php" class="index-link">Manage Orders</a>
