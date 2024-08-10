@@ -41,7 +41,7 @@
     $image = $finalFilename;
     }
 
-    $sql = "UPDATE inventory2 SET location = '$location',itemNumber = '$itemNumber', itemCode = '$itemCode', brand = '$brand', category = '$category', itemDesc_1 = '$itemDesc_1', itemDesc_2 = '$itemDesc_2', itemDesc_3 = '$itemDesc_3', price = '$price', units = '$units', totalstockValue = '$totalstockValue', image = '$image' WHERE inventory_Id = $id";
+    $sql = "UPDATE inventory2 SET location = '$location',itemNumber = '$itemNumber', itemCode = '$itemCode', brand = '$brand', category = '$category', itemDesc_1 = '$itemDesc_1', itemDesc_2 = '$itemDesc_2', itemDesc_3 = '$itemDesc_3', price = '$price', units = '$units', totalstockValue = '$totalstockValue', image = '$image' WHERE inventory_Id = $id;";
 
     $result = mysqli_query($con, $sql);
     if ($result) {

@@ -41,7 +41,7 @@
     $image = $finalFilename;
     }
 
-    $sql = "UPDATE inventory_warehouse SET location_warehouse = '$location',itemNumber_warehouse = '$itemNumber', itemCode_warehouse = '$itemCode', brand_warehouse = '$brand', category_warehouse = '$category', itemDesc_1_warehouse = '$itemDesc_1', itemDesc_2_warehouse = '$itemDesc_2', itemDesc_3_warehouse = '$itemDesc_3', price_warehouse = '$price', units_warehouse = '$units', totalstockValue_warehouse = '$totalstockValue', image_warehouse = '$image' WHERE inventory_warehouse_Id = $id";
+    $sql = "UPDATE inventory_warehouse SET location_warehouse = '$location',itemNumber_warehouse = '$itemNumber', itemCode_warehouse = '$itemCode', brand_warehouse = '$brand', category_warehouse = '$category', itemDesc_1_warehouse = '$itemDesc_1', itemDesc_2_warehouse = '$itemDesc_2', itemDesc_3_warehouse = '$itemDesc_3', price_warehouse = '$price', units_warehouse = '$units', totalstockValue_warehouse = '$totalstockValue', image_warehouse = '$image' WHERE inventory_warehouse_Id = $id;";
 
     $result = mysqli_query($con, $sql);
     if ($result) {

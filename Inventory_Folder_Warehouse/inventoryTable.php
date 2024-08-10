@@ -67,7 +67,7 @@
         echo "Backup created successfully. File: $backupFile";
         echo "<script>
         alert('Backup created successfully!');
-        window.location.href = '../Inventory_Folder/inventoryTable.php';
+        window.location.href = '../Inventory_Folder_Warehouse/inventoryTable.php';
       </script>";
 
         
