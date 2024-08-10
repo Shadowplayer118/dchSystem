@@ -3,13 +3,16 @@ include '../inventoryDb_connect.php';
 
 unset($filterValue);
 
+
+
 if (isset($_GET['search'])) {   
     $filterValue = $_GET['search'];
     // Example: Adjust this query to match your requirements
     $sql = "SELECT * FROM activity WHERE date_performed LIKE '%$filterValue%'";
     unset($filterValue);
 } else {
-    $sql = "SELECT * FROM activity";
+    $sql = "SELECT * FROM activity WHERE date_performed = CURDATE();";
+
     unset($filterValue);
 }
 

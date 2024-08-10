@@ -144,13 +144,13 @@ $result = mysqli_query($con, $sql);
 </div>
 
 <div class="link-container">
-<a href="../Inventory_Folder_Warehouse/inventoryTable.php"  class="index-link">Warehouse Inventory</a>
+<a href="../Inventory_Folder_Warehouse/inventoryTable.php"  class="index-link">Store Inventory</a>
 <br>
 
 </div>
 
 <div class="link-container">
-<a href="../Inventory_Folder/inventoryTable.php"  class="index-link">Store Inventory</a>
+<a href="../Inventory_Folder/inventoryTable.php"  class="index-link">Warehouse Inventory</a>
 <br>
 
 </div>
@@ -190,7 +190,7 @@ $result = mysqli_query($con, $sql);
 
 
     
-<h2 style = "background-color:red; width:fit-content; padding:5px; border-radius:10px;">STORE INVENTORY</h2>
+<h2 style = "background-color:red; width:fit-content; padding:5px; border-radius:10px;">WAREHOUSE INVENTORY</h2>
 
 
 
