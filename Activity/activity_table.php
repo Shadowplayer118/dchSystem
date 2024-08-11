@@ -7,16 +7,28 @@ unset($filterValue);
 
 
 
+
+
+
+
 if (isset($_GET['search'])) {   
     $filterValue = $_GET['search'];
+    
     // Example: Adjust this query to match your requirements
     $sql = "SELECT * FROM activity WHERE date_performed LIKE '%$filterValue%'";
+   
     unset($filterValue);
 } else {
     $sql = "SELECT * FROM activity WHERE date_performed = CURDATE();";
+    
 
     unset($filterValue);
 }
+
+
+if (isset($_GET['search'])) {   
+    $calValue = $_GET['search'];   
+} 
 
 $result = mysqli_query($con, $sql); 
 ?>
@@ -38,8 +50,10 @@ $result = mysqli_query($con, $sql);
 <a href="../HomePage.php"  class="index-link">Home</a>
 <br>
 </div> -->
+<button onClick = "Close();" style="background-color:red; color:white;" >Close</button>
 
-<button onClick = "Close();">Close</button>
+
+    
 
     <div class="whole-container">
         <h2>DCH Inventory</h2>
@@ -51,9 +65,17 @@ $result = mysqli_query($con, $sql);
                 <label for="filter"></label>
                 <input id="search" type="date" class="searchBox" name="search" value="<?php if(isset($_GET['search'])){echo $_GET['search'];}?>" class="search-box" placeholder="Search data" autocomplete="off" required> 
             </form>
-            <button onClick="Hide()">Format to Copy</button>
-            <button onClick="copyTable()">Copy Table</button>
+            <button onClick="resetToToday()" style="background-color:blue; color:white;">Today</button>
+            <button onClick="Hide()" style="background-color:green; color:white;">Format to Copy</button>
+            <button onClick="copyTable()" style="background-color:orange; color:white;">Copy Table</button>
+<div class="infoCont">
+<div class="activitiesPer">Activities performed on:__</div>
+<div class="calendar" data-filtervalue="<?php echo isset($calValue) ? $calValue : ''; ?>"></div>
+
+</div>
+           
         </div>
+
 
         <!------Center----->
         <div class="act-container">
@@ -174,6 +196,34 @@ $result = mysqli_query($con, $sql);
                 window.close();
             }
     </script>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    // Get the calendar element
+    var calendar = document.querySelector('.calendar');
+    
+    // Get the filterValue from the data attribute
+    var filterValue = calendar.getAttribute('data-filtervalue');
+    
+    // If filterValue is set, update the calendar content
+    if (filterValue) {
+        calendar.textContent = filterValue;
+    } else {
+        // If no filterValue, display the current date
+        var today = new Date().toLocaleDateString();
+        calendar.textContent = today;
+    }
+});
+
+</script>
+
+<script>
+         function resetToToday() {
+                var today = new Date().toISOString().split('T')[0];
+                window.location.href = "?search=" + today;
+            }
+</script>
 
 
 

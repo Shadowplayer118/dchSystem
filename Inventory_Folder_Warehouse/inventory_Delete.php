@@ -4,10 +4,36 @@ include '../inventoryDb_connect.php';
 if (isset($_GET['deleteId'])) {
     $id = $_GET['deleteId'];
 
+
+    $sqlfetch = "SELECT * FROM inventory_warehouse WHERE inventory_warehouse_Id = $id";
+    $result = mysqli_query($con, $sqlfetch);
+    $row = mysqli_fetch_assoc($result);
+    $image = $row['image_warehouse'];
+    $Upinventory_Id = $row['inventory_warehouse_Id'];
+    $UpitemNumber = $row['itemNumber_warehouse'];
+    $UpitemCode = $row['itemCode_warehouse'];
+    $Upbrand = $row['brand_warehouse'];
+    $Upcategory = $row['category_warehouse'];
+    $UpitemDesc_1 = $row['itemDesc_1_warehouse'];
+    $UpitemDesc_2 = $row['itemDesc_2_warehouse'];
+    $UpitemDesc_3 = $row['itemDesc_3_warehouse'];
+    $Upprice = $row['price_warehouse'];
+    $Upunits = $row['units_warehouse'];
+    $Uplocation = $row['location_warehouse'];
+    $UptotalstockValue = $row['totalstockValue_warehouse'];
+
+    $UpitemCode = "'".$UpitemCode. "'";
+    $Upbrand = "'".$Upbrand. "'";
+    $Upcategory = "'".$Upcategory. "'";
+    $UpitemDesc_1 = "'".$UpitemDesc_1. "'";
+    $UpitemDesc_2 = "'".$UpitemDesc_2. "'";
+    $UpitemDesc_3 = "'".$UpitemDesc_3. "'";
+    $Uplocation = "'".$Uplocation. "'";
+
     
         // Perform the deletion query here
         $sql = "DELETE FROM inventory_warehouse WHERE inventory_warehouse_id = ?;";
-        $sqlCopy = "DELETE FROM inventory_warehouse WHERE inventory_warehouse_id = $id;";
+        $sqlCopy = "DELETE FROM inventory_warehouse WHERE itemCode_warehouse = $UpitemCode AND brand_warehouse = $Upbrand AND category_warehouse = $Upcategory AND itemDesc_1_warehouse = $UpitemDesc_1 AND itemDesc_2_warehouse = $UpitemDesc_2 AND itemDesc_3_warehouse = $UpitemDesc_3 AND location_warehouse = $Uplocation;";
         $stmt = $con->prepare($sql);
         $stmt->bind_param("i", $id);
         $stmt->execute();

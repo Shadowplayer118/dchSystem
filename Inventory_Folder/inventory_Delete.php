@@ -5,9 +5,37 @@ if (isset($_GET['deleteId'])) {
     $id = $_GET['deleteId'];
 
     
+    
+    $sqlfetch = "SELECT * FROM inventory2 WHERE inventory_Id = $id";
+        $result = mysqli_query($con, $sqlfetch);
+        $row = mysqli_fetch_assoc($result);
+        $Upimage = $row['image'];
+        $Upinventory_Id = $row['inventory_Id'];
+        $UpitemNumber = $row['itemNumber'];
+        $UpitemCode = $row['itemCode'];
+        $Upbrand = $row['brand'];
+        $Upcategory = $row['category'];
+        $UpitemDesc_1 = $row['itemDesc_1'];
+        $UpitemDesc_2 = $row['itemDesc_2'];
+        $UpitemDesc_3 = $row['itemDesc_3'];
+        $Upprice = $row['price'];
+        $Upunits = $row['units'];
+        $Uplocation = $row['location'];
+        $UptotalstockValue = $row['totalstockValue'];
+
+        
+    $UpitemCode = "'".$UpitemCode. "'";
+    $Upbrand = "'".$Upbrand. "'";
+    $Upcategory = "'".$Upcategory. "'";
+    $UpitemDesc_1 = "'".$UpitemDesc_1. "'";
+    $UpitemDesc_2 = "'".$UpitemDesc_2. "'";
+    $UpitemDesc_3 = "'".$UpitemDesc_3. "'";
+    $Uplocation = "'".$Uplocation. "'";
+
+    
         // Perform the deletion query here
         $sql = "DELETE FROM inventory2 WHERE inventory_id = ?;";
-        $sqlCopy = "DELETE FROM inventory2 WHERE inventory_id = $id;";
+        $sqlCopy = "DELETE FROM inventory2 WHERE itemCode = $UpitemCode AND brand = $Upbrand AND category = $Upcategory AND itemDesc_1 = $UpitemDesc_1 AND itemDesc_2 = $UpitemDesc_2 AND itemDesc_3 = $UpitemDesc_3 AND location = $Uplocation;";
         $stmt = $con->prepare($sql);
         $stmt->bind_param("i", $id);
         $stmt->execute();
