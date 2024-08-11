@@ -52,12 +52,8 @@ $result = mysqli_query($con, $sql);
 </div> -->
 <button onClick = "Close();" style="background-color:red; color:white;" >Close</button>
 
-
-    
-
     <div class="whole-container">
         <h2>DCH Inventory</h2>
-
         <!------Top----->
         <div class="controls">
             <form action="" method="GET" class="search-bar"> 

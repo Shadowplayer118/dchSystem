@@ -91,7 +91,6 @@
     <title>Update Inventory</title>
     </head>
 
-
     <body>
 
         <div class="update-container">
@@ -123,6 +122,13 @@
                     }
                     }
                 </script>
+
+                <input type="number" class="stockInOut" id="stockInOut"><br>
+                <select name="stockType" id="stockType">
+                    <option value="">Stock In</option>
+                    <option value="">Stock Out</option>
+                </select>    
+
 
 
                 </div>
@@ -208,6 +214,29 @@
             </form>
         </div>
 
+        <script>
+        $(document).ready(function() {
+            // Function to enable/disable stockInOut based on stockType value
+            function toggleStockInOut() {
+                if ($("#stockType").val() === "Stock In") {
+                    $("#stockInOut").prop("disabled", false);
+                    console.log("Yo");
+                } else {
+                    $("#stockInOut").prop("disabled", true);
+                    console.log("Yeerr");
+
+                }
+            }
+
+            // Run the function once when the page loads
+            toggleStockInOut();
+
+            // Attach the function to the change event of the stockType dropdown
+            $("#stockInOut").change(function() {
+                toggleStockInOut();
+            });
+        });
+    </script>
     </body>
 
 </html>

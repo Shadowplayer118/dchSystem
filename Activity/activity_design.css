@@ -25,6 +25,16 @@
     padding: 10px;
 }
 
+table{
+    border-collapse: collapse;
+}
+th{
+    color: white;
+    background-color: rgb(36, 69, 151);
+    border-collapse: collapse;
+    
+
+}
 button{
     padding: 5px;
     margin: 5px;
