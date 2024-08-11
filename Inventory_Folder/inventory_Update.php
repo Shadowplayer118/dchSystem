@@ -2,23 +2,27 @@
     include '../inventoryDb_connect.php';
 
     $id = $_GET['updateId'];
+    
 
+    
+    
+    
     $sql = "SELECT * FROM inventory2 WHERE inventory_Id = $id";
         $result = mysqli_query($con, $sql);
         $row = mysqli_fetch_assoc($result);
-        $image = $row['image'];
-        $inventory_Id = $row['inventory_Id'];
-        $itemNumber = $row['itemNumber'];
-        $itemCode = $row['itemCode'];
-        $brand = $row['brand'];
-        $category = $row['category'];
-        $itemDesc_1 = $row['itemDesc_1'];
-        $itemDesc_2 = $row['itemDesc_2'];
-        $itemDesc_3 = $row['itemDesc_3'];
-        $price = $row['price'];
-        $units = $row['units'];
-        $location = $row['location'];
-        $totalstockValue = $row['totalstockValue'];
+        $Upimage = $row['image'];
+        $Upinventory_Id = $row['inventory_Id'];
+        $UpitemNumber = $row['itemNumber'];
+        $UpitemCode = $row['itemCode'];
+        $Upbrand = $row['brand'];
+        $Upcategory = $row['category'];
+        $UpitemDesc_1 = $row['itemDesc_1'];
+        $UpitemDesc_2 = $row['itemDesc_2'];
+        $UpitemDesc_3 = $row['itemDesc_3'];
+        $Upprice = $row['price'];
+        $Upunits = $row['units'];
+        $Uplocation = $row['location'];
+        $UptotalstockValue = $row['totalstockValue'];
 
     if (isset($_POST['submit'])) {
         $itemNumber = $_POST['itemNumber'];
@@ -38,19 +42,29 @@
         $fileExtension = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
         $finalFilename = $randomFilename . '.' . $fileExtension;
         move_uploaded_file($_FILES['image']['tmp_name'], '../images/' . $finalFilename);
-    $image = $finalFilename;
+    $Upimage = $finalFilename;
     }
 
-    $sql = "UPDATE inventory2 SET location = '$location',itemNumber = '$itemNumber', itemCode = '$itemCode', brand = '$brand', category = '$category', itemDesc_1 = '$itemDesc_1', itemDesc_2 = '$itemDesc_2', itemDesc_3 = '$itemDesc_3', price = '$price', units = '$units', totalstockValue = '$totalstockValue', image = '$image' WHERE inventory_Id = $id;";
+   
+    $UpitemCode = "'".$UpitemCode. "'";
+    $Upbrand = "'".$Upbrand. "'";
+    $Upcategory = "'".$Upcategory. "'";
+    $UpitemDesc_1 = "'".$UpitemDesc_1. "'";
+    $UpitemDesc_2 = "'".$UpitemDesc_2. "'";
+    $UpitemDesc_3 = "'".$UpitemDesc_3. "'";
+    $Uplocation = "'".$Uplocation. "'";
 
+    $sql = "UPDATE inventory2 SET location = '$location',itemNumber = '$itemNumber', itemCode = '$itemCode', brand = '$brand', category = '$category', itemDesc_1 = '$itemDesc_1', itemDesc_2 = '$itemDesc_2', itemDesc_3 = '$itemDesc_3', price = '$price', units = '$units', totalstockValue = '$totalstockValue', image = '$Upimage' WHERE inventory_Id = $id;";
+    $sqlCopy = "UPDATE inventory2 SET location = '$location',itemNumber = '$itemNumber', itemCode = '$itemCode', brand = '$brand', category = '$category', itemDesc_1 = '$itemDesc_1', itemDesc_2 = '$itemDesc_2', itemDesc_3 = '$itemDesc_3', price = '$price', units = '$units', totalstockValue = '$totalstockValue', image = '$Upimage' WHERE itemCode = $UpitemCode AND brand = $Upbrand AND category = $Upcategory AND itemDesc_1 = $UpitemDesc_1 AND itemDesc_2 = $UpitemDesc_2 AND itemDesc_3 = $UpitemDesc_3 AND location = $Uplocation;";
+    
     $result = mysqli_query($con, $sql);
     if ($result) {
         
-        $sql2 = "INSERT INTO activity(query, date_performed) VALUES ('" . mysqli_real_escape_string($con, $sql) . "', NOW())";
+        $sql2 = "INSERT INTO activity(query, date_performed) VALUES ('" . mysqli_real_escape_string($con, $sqlCopy) . "', NOW())";
 
         if (mysqli_query($con, $sql2)) {
             echo "<script>alert('Data Updated');</script>";
-            echo "<script>console.log(`" . addslashes($sql) . "`);</script>";
+            echo "<script>console.log(`" . addslashes($Upimage) . "`);</script>";
             // Optionally, close the window
             echo "<script>window.close();</script>";
             exit();
@@ -90,7 +104,7 @@
                 <div class="form-group">
 
                 <label for="image">Select Image:</label>
-                <img id="preview" src="../images/<?= $image ?>" alt="Image Preview" style="display: block; max-width: 200px; max-height: 200px;">
+                <img id="preview" src="../images/<?= $Upimage ?>" alt="Image Preview" style="display: block; max-width: 200px; max-height: 200px;">
                 <br>
                 <input type="file" id="image" name="image" onchange="previewImage(event)">
                 <br>
@@ -109,7 +123,8 @@
                     if (input.files && input.files[0]) {
                     reader.readAsDataURL(input.files[0]);
                     } else {
-                    preview.src = "../images/<?= $image ?>";
+                    preview.src = "../images/<?= $Upimage ?>";
+                    
                     }
                     }
                 </script>
@@ -123,70 +138,70 @@
                     <label>Item Number</label>
                     <br>
                     <input type="text" class="form-control" placeholder="Enter item number" name="itemNumber"
-                    autocomplete="off" value="<?= $itemNumber ?>">
+                    autocomplete="off" value="<?= $UpitemNumber ?>">
                     </div>
 
                     <div class="form-group">
                     <label>Item Code</label>
                     <br>
                     <input type="text" class="form-control" placeholder="Enter item item code" name="itemCode"
-                    autocomplete="off" value="<?= $itemCode ?>">
+                    autocomplete="off" value="<?= $UpitemCode ?>">
                     </div>
 
                     <div class="form-group">
                     <label>Item Brand</label>
                     <br>
                     <input type="text" class="form-control" placeholder="Enter item brand" name="brand"
-                    autocomplete="off" value="<?= $brand ?>">
+                    autocomplete="off" value="<?= $Upbrand ?>">
                     </div>
 
                     <div class="form-group">
                     <label>Item Category</label>
                     <br>
                     <input type="text" class="form-control" placeholder="Enter item category" name="category"
-                    autocomplete="off" value="<?= $category ?>">
+                    autocomplete="off" value="<?= $Upcategory ?>">
                     </div>
 
                     <div class="form-group">
                     <label>Description 1</label>
                     <br>
                     <input type="text" class="form-control" placeholder="Enter item description 1" name="itemDesc_1"
-                    autocomplete="off" value="<?= $itemDesc_1 ?>">
+                    autocomplete="off" value="<?= $UpitemDesc_1 ?>">
                     </div>
 
                     <div class="form-group">
                     <label>Description 2</label>
                     <br>
                     <input type="text" class="form-control" placeholder="Enter item description 2" name="itemDesc_2"
-                    autocomplete="off" value="<?= $itemDesc_2 ?>">
+                    autocomplete="off" value="<?= $UpitemDesc_2 ?>">
                     </div>
 
                     <div class="form-group">
                     <label>Description 3</label>
                     <br>
                     <input type="text" class="form-control" placeholder="Enter item description 3" name="itemDesc_3"
-                    autocomplete="off" value="<?= $itemDesc_3 ?>">
+                    autocomplete="off" value="<?= $UpitemDesc_3 ?>">
                     </div>
 
                     <div class="form-group">
                     <label>Item Price</label>
                     <br>
                     <input type="text" class="form-control" placeholder="Enter item price" name="price"
-                    autocomplete="off" value="<?= $price ?>">
+                    autocomplete="off" value="<?= $Upprice ?>">
                     </div>
 
                     <div class="form-group">
                     <label>Item Units</label>
                     <br>
                     <input type="text" class="form-control" placeholder="Enter item units" name="units"
-                    autocomplete="off" value="<?= $units ?>">
+                    autocomplete="off" value="<?= $Upunits ?>">
                     </div>
 
                     <div class="form-group">
                     <label>Item Location</label>
                     <br>
                     <input type="text" class="form-control" placeholder="Enter item Location" name="location"
-                    autocomplete="off" value="<?= $location?>">
+                    autocomplete="off" value="<?= $Uplocation?>">
                     </div>
                     <br>
 

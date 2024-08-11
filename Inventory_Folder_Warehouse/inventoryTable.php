@@ -117,7 +117,7 @@ $result = mysqli_query($con, $sql);
             crossorigin="anonymous"></script> -->
 
  
-<title>WAREHOUSE INVENTORY</title>
+<title>STORE INVENTORY</title>
 
     
 </head>

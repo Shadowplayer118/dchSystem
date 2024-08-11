@@ -55,13 +55,13 @@ $result = mysqli_query($con, $sql);
     <br>
     </div>
     <div class="link-container">
-<a href="../Inventory_Folder_Warehouse/inventoryTable.php"  class="index-link">Warehouse Inventory</a>
+<a href="../Inventory_Folder_Warehouse/inventoryTable.php"  class="index-link">Store Inventory</a>
 <br>
 
 </div>
 
 <div class="link-container">
-<a href="../Inventory_Folder/inventoryTable.php"  class="index-link">Store Inventory</a>
+<a href="../Inventory_Folder/inventoryTable.php"  class="index-link">Warehouse Inventory</a>
 <br>
 
 </div>

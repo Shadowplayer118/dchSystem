@@ -1,3 +1,5 @@
+
+
 <?php
 include '../inventoryDb_connect.php';
 
@@ -47,7 +49,7 @@ $result = mysqli_query($con, $sql);
             <form action="" method="GET" class="search-bar"> 
                 <button type="submit" class="searchBtn btn btn-primary search-btn links">Search</button>
                 <label for="filter"></label>
-                <input id="search" type="date" class="searchBox" name="search" value="<?php if(isset($_GET['search'])){echo $_GET['search'];}?>" class="search-box" placeholder="Search data" autocomplete="off"> 
+                <input id="search" type="date" class="searchBox" name="search" value="<?php if(isset($_GET['search'])){echo $_GET['search'];}?>" class="search-box" placeholder="Search data" autocomplete="off" required> 
             </form>
             <button onClick="Hide()">Format to Copy</button>
             <button onClick="copyTable()">Copy Table</button>
@@ -172,6 +174,8 @@ $result = mysqli_query($con, $sql);
                 window.close();
             }
     </script>
+
+
 
 
 

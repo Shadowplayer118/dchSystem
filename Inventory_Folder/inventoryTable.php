@@ -117,7 +117,7 @@ $result = mysqli_query($con, $sql);
             crossorigin="anonymous"></script> -->
 
  
-<title>Inventory Table</title>
+<title>WAREHOUSE INVENTORY</title>
 
     
 </head>
@@ -277,7 +277,7 @@ $result = mysqli_query($con, $sql);
                         <th scope="col" class = "pending">' . $location . '</th>
 
                         <td>
-                        <a href="inventory_Update.php?updateId=' . $inventory_Id . '" target="_blank" class = "links">Update</a>
+                        <a href="inventory_Update.php?updateId=' . $inventory_Id . ' " target="_blank" class = "links">Update</a>
                         <a href="inventory_Delete.php?deleteId=' . $inventory_Id . '" class = "links deleteConfirm" style = "background-color:red;"">Delete</a>
                         </td>
                         </tr>

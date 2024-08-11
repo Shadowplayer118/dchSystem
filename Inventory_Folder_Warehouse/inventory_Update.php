@@ -3,22 +3,23 @@
 
     $id = $_GET['updateId'];
 
+
     $sql = "SELECT * FROM inventory_warehouse WHERE inventory_warehouse_Id = $id";
         $result = mysqli_query($con, $sql);
         $row = mysqli_fetch_assoc($result);
         $image = $row['image_warehouse'];
-        $inventory_Id = $row['inventory_warehouse_Id'];
-        $itemNumber = $row['itemNumber_warehouse'];
-        $itemCode = $row['itemCode_warehouse'];
-        $brand = $row['brand_warehouse'];
-        $category = $row['category_warehouse'];
-        $itemDesc_1 = $row['itemDesc_1_warehouse'];
-        $itemDesc_2 = $row['itemDesc_2_warehouse'];
-        $itemDesc_3 = $row['itemDesc_3_warehouse'];
-        $price = $row['price_warehouse'];
-        $units = $row['units_warehouse'];
-        $location = $row['location_warehouse'];
-        $totalstockValue = $row['totalstockValue_warehouse'];
+        $Upinventory_Id = $row['inventory_warehouse_Id'];
+        $UpitemNumber = $row['itemNumber_warehouse'];
+        $UpitemCode = $row['itemCode_warehouse'];
+        $Upbrand = $row['brand_warehouse'];
+        $Upcategory = $row['category_warehouse'];
+        $UpitemDesc_1 = $row['itemDesc_1_warehouse'];
+        $UpitemDesc_2 = $row['itemDesc_2_warehouse'];
+        $UpitemDesc_3 = $row['itemDesc_3_warehouse'];
+        $Upprice = $row['price_warehouse'];
+        $Upunits = $row['units_warehouse'];
+        $Uplocation = $row['location_warehouse'];
+        $UptotalstockValue = $row['totalstockValue_warehouse'];
 
     if (isset($_POST['submit'])) {
         $itemNumber = $_POST['itemNumber'];
@@ -41,12 +42,21 @@
     $image = $finalFilename;
     }
 
-    $sql = "UPDATE inventory_warehouse SET location_warehouse = '$location',itemNumber_warehouse = '$itemNumber', itemCode_warehouse = '$itemCode', brand_warehouse = '$brand', category_warehouse = '$category', itemDesc_1_warehouse = '$itemDesc_1', itemDesc_2_warehouse = '$itemDesc_2', itemDesc_3_warehouse = '$itemDesc_3', price_warehouse = '$price', units_warehouse = '$units', totalstockValue_warehouse = '$totalstockValue', image_warehouse = '$image' WHERE inventory_warehouse_Id = $id;";
+    $UpitemCode = "'".$UpitemCode. "'";
+    $Upbrand = "'".$Upbrand. "'";
+    $Upcategory = "'".$Upcategory. "'";
+    $UpitemDesc_1 = "'".$UpitemDesc_1. "'";
+    $UpitemDesc_2 = "'".$UpitemDesc_2. "'";
+    $UpitemDesc_3 = "'".$UpitemDesc_3. "'";
+    $Uplocation = "'".$Uplocation. "'";
 
+    $sql = "UPDATE inventory_warehouse SET location_warehouse = '$location',itemNumber_warehouse = '$itemNumber', itemCode_warehouse = '$itemCode', brand_warehouse = '$brand', category_warehouse = '$category', itemDesc_1_warehouse = '$itemDesc_1', itemDesc_2_warehouse = '$itemDesc_2', itemDesc_3_warehouse = '$itemDesc_3', price_warehouse = '$price', units_warehouse = '$units', totalstockValue_warehouse = '$totalstockValue', image_warehouse = '$image' WHERE inventory_warehouse_Id = $id;";
+    $sqlCopy = "UPDATE inventory_warehouse SET location_warehouse = '$location',itemNumber_warehouse = '$itemNumber', itemCode_warehouse = '$itemCode', brand_warehouse = '$brand', category_warehouse = '$category', itemDesc_1_warehouse = '$itemDesc_1', itemDesc_2_warehouse = '$itemDesc_2', itemDesc_3_warehouse = '$itemDesc_3', price_warehouse = '$price', units_warehouse = '$units', totalstockValue_warehouse = '$totalstockValue', image_warehouse = '$image' WHERE itemCode_warehouse = $UpitemCode AND brand_warehouse = $Upbrand AND category_warehouse = $Upcategory AND itemDesc_1_warehouse = $UpitemDesc_1 AND itemDesc_2_warehouse = $UpitemDesc_2 AND itemDesc_3_warehouse = $UpitemDesc_3 AND location_warehouse = $Uplocation;";
+    
     $result = mysqli_query($con, $sql);
     if ($result) {
         
-        $sql2 = "INSERT INTO activity(query, date_performed) VALUES ('" . mysqli_real_escape_string($con, $sql) . "', NOW())";
+        $sql2 = "INSERT INTO activity(query, date_performed) VALUES ('" . mysqli_real_escape_string($con, $sqlCopy) . "', NOW())";
 
         if (mysqli_query($con, $sql2)) {
             echo "<script>alert('Data Updated');</script>";
@@ -123,70 +133,70 @@
                     <label>Item Number</label>
                     <br>
                     <input type="text" class="form-control" placeholder="Enter item number" name="itemNumber"
-                    autocomplete="off" value="<?= $itemNumber ?>">
+                    autocomplete="off" value="<?= $UpitemNumber ?>">
                     </div>
 
                     <div class="form-group">
                     <label>Item Code</label>
                     <br>
                     <input type="text" class="form-control" placeholder="Enter item item code" name="itemCode"
-                    autocomplete="off" value="<?= $itemCode ?>">
+                    autocomplete="off" value="<?= $UpitemCode ?>">
                     </div>
 
                     <div class="form-group">
                     <label>Item Brand</label>
                     <br>
                     <input type="text" class="form-control" placeholder="Enter item brand" name="brand"
-                    autocomplete="off" value="<?= $brand ?>">
+                    autocomplete="off" value="<?= $Upbrand ?>">
                     </div>
 
                     <div class="form-group">
                     <label>Item Category</label>
                     <br>
                     <input type="text" class="form-control" placeholder="Enter item category" name="category"
-                    autocomplete="off" value="<?= $category ?>">
+                    autocomplete="off" value="<?= $Upcategory ?>">
                     </div>
 
                     <div class="form-group">
                     <label>Description 1</label>
                     <br>
                     <input type="text" class="form-control" placeholder="Enter item description 1" name="itemDesc_1"
-                    autocomplete="off" value="<?= $itemDesc_1 ?>">
+                    autocomplete="off" value="<?= $UpitemDesc_1 ?>">
                     </div>
 
                     <div class="form-group">
                     <label>Description 2</label>
                     <br>
                     <input type="text" class="form-control" placeholder="Enter item description 2" name="itemDesc_2"
-                    autocomplete="off" value="<?= $itemDesc_2 ?>">
+                    autocomplete="off" value="<?= $UpitemDesc_2 ?>">
                     </div>
 
                     <div class="form-group">
                     <label>Description 3</label>
                     <br>
                     <input type="text" class="form-control" placeholder="Enter item description 3" name="itemDesc_3"
-                    autocomplete="off" value="<?= $itemDesc_3 ?>">
+                    autocomplete="off" value="<?= $UpitemDesc_3 ?>">
                     </div>
 
                     <div class="form-group">
                     <label>Item Price</label>
                     <br>
                     <input type="text" class="form-control" placeholder="Enter item price" name="price"
-                    autocomplete="off" value="<?= $price ?>">
+                    autocomplete="off" value="<?= $Upprice ?>">
                     </div>
 
                     <div class="form-group">
                     <label>Item Units</label>
                     <br>
                     <input type="text" class="form-control" placeholder="Enter item units" name="units"
-                    autocomplete="off" value="<?= $units ?>">
+                    autocomplete="off" value="<?= $Upunits ?>">
                     </div>
 
                     <div class="form-group">
                     <label>Item Location</label>
                     <br>
                     <input type="text" class="form-control" placeholder="Enter item Location" name="location"
-                    autocomplete="off" value="<?= $location?>">
+                    autocomplete="off" value="<?= $Uplocation?>">
                     </div>
                     <br>
 
