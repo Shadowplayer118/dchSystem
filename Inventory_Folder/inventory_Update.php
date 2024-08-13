@@ -193,7 +193,7 @@
                     <div class="form-group">
                     <label>Item Units</label>
                     <br>
-                    <input type="text" class="form-control" placeholder="Enter item units" name="units"
+                    <input type="text" class="form-control" placeholder="Enter item units" name="units" id = "units"
                     autocomplete="off" value="<?= $Upunits ?>">
                     </div>
 
@@ -213,6 +213,77 @@
             </form>
         </div>
 
+        <div class="Stockers">
+        <input type="number" class="stockInOut" id="stockInOut"><br>
+
+        <div class="stock_controls">
+        <select name="stockType" id="stockType">
+                <option value="Stock Out">Stock Out</option>
+                    <option value="Stock In">Stock In</option>
+            
+                </select>    
+
+                <button class=stockBtn onClick ="StockChanger()">Execute</button>
+                <button class=RevBtn onClick ="Revert()">Revert</button>
+
+        </div>
+                
+
+        </div>
+
+
+        <script>
+function StockChanger() {
+
+  
+    // document.getElementById('units').value = '50';
+     
+    
+    const units_element = document.getElementById('units');
+    const change_element = document.getElementById('stockInOut');
+    const type_element = document.getElementById('stockType');
+
+
+
+    // Parse the values as numbers
+    let units = parseInt(units_element.value);
+    const change = parseInt(change_element.value);
+    const type = type_element.value;
+
+
+    // Check if values are valid numbers
+    if (isNaN(units) || isNaN(change)) {
+        alert("Please enter valid numbers for units and stock change.");
+        return;
+    }
+
+    // Update the units based on stock type
+    if (type === "Stock In") {
+        console.log('In');
+        const newval = units + change;
+        let strNum = newval.toString();
+        document.getElementById('units').value = strNum;
+        alert(change + " units added");
+    } else if (type === "Stock Out") {
+        console.log('Out');
+        
+        const newval = units - change;
+        let strNum = newval.toString();
+        document.getElementById('units').value = strNum;
+        alert(change + " units deducted");
+        
+    }
+
+    // Update the units element with the new value
+    // units_element.value = units;
+}
+
+function Revert(){
+    location.reload();
+}
+
+
+                </script>
     </body>
 
 </html>
