@@ -2,11 +2,7 @@
     include '../inventoryDb_connect.php';
 
     $id = $_GET['updateId'];
-    
 
-    
-    
-    
     $sql = "SELECT * FROM inventory2 WHERE inventory_Id = $id";
         $result = mysqli_query($con, $sql);
         $row = mysqli_fetch_assoc($result);
@@ -87,7 +83,7 @@
     <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"/> -->
     <link rel="stylesheet" type="text/css" href="inventoryDesign.css">
-    <link rel="stylesheet" type="text/css" href="../uniStyle.css">
+    <link rel="stylesheet" type="text/css" href="../uniStyle.css">  
 
     <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
@@ -215,7 +211,7 @@
         </div>
         
         <div class="Stockers">
-    <form method="post" action="inventory_stock.php" target="_blank">
+    <form id="stockForm" method="post" action="inventory_stock.php">
         <!-- Hidden input to pass the updateId -->
         <input type="hidden" name="updateId" value="<?= $id?>">
         <input type="hidden" name="itemName" value="<?= ($UpitemDesc_1 . ' ' . $UpitemDesc_2 . ' ' . $UpitemDesc_3) ?>">
@@ -235,7 +231,7 @@
                 <option value="Stock In">Stock In</option>
             </select>    
 
-            <button type="submit" class="stockBtn">Execute</button>
+            <button type="submit" class="stockBtn"  onclick="confirmAction(event)">Execute</button>
             <button type="button" class="RevBtn" onClick="Revert()">Revert</button>
         </div>
     </form>
@@ -302,6 +298,26 @@ function Revert(){
 function close(){
     window.close();
 }
+
+
+function confirmAction(event) {
+
+    
+            // Prevent the form from submitting immediately
+            event.preventDefault();
+
+            var form = document.getElementById('stockForm');
+    var stockInOut = form.querySelector('input[name="stockInOut"]').value;
+    var stockType = form.querySelector('select[name="stockType"]').value;
+    var itemName = form.querySelector('input[name="itemName"]').value;
+    var itemNumber = form.querySelector('input[name="itemNumber"]').value;
+
+            // Display confirmation dialog
+            if (confirm(`Are you sure you want to ${stockType} ${stockInOut} ${itemName}?`)) {
+                // Submit the form if confirmed
+                document.getElementById('stockForm').submit();
+            }
+        }
 
 
                 </script>

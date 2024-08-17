@@ -18,7 +18,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Print the values for debugging
 
-
     if($stockType === 'Stock Out'){
 
         $newStock = $stockUnits - $stockInOut;
@@ -48,6 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         price,
                         units_added,
                         previous_units,
+                        current_stock,
                         transaction_type
                     ) VALUES (
                         NOW(),
@@ -60,6 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         '".mysqli_real_escape_string($con, $stockPrice)."',
                         '".mysqli_real_escape_string($con, $stockInOut)."',
                           '".mysqli_real_escape_string($con, $stockUnits)."',
+                        '".mysqli_real_escape_string($con, $newStock)."',
                         '".mysqli_real_escape_string($con, $stockType)."'
                     )";
                             
@@ -102,6 +103,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     price,
                     units_added,
                     previous_units,
+                    current_stock,
                     transaction_type
                 ) VALUES (
                     NOW(),
@@ -114,6 +116,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     '".mysqli_real_escape_string($con, $stockPrice)."',
                     '".mysqli_real_escape_string($con, $stockInOut)."',
                     '".mysqli_real_escape_string($con, $stockUnits)."',
+                      '".mysqli_real_escape_string($con, $newStock)."',
                     '".mysqli_real_escape_string($con, $stockType)."'
                 )";    
             if (mysqli_query($con, $sql3)) {
