@@ -206,30 +206,47 @@
                     <br>
 
                     <button name="submit" class="btn btn-primary btn-update">Update</button>
+                    
                     <a href="inventoryTable.php" class="btn btn-danger btn-cancel">Cancel</a>
 
                 </div>
 
             </form>
         </div>
-
+        
         <div class="Stockers">
-        <input type="number" class="stockInOut" id="stockInOut"><br>
+    <form method="post" action="inventory_stock.php" target="_blank">
+        <!-- Hidden input to pass the updateId -->
+        <input type="hidden" name="updateId" value="<?= $id?>">
+        <input type="hidden" name="itemName" value="<?= ($UpitemDesc_1 . ' ' . $UpitemDesc_2 . ' ' . $UpitemDesc_3) ?>">
+        <input type="hidden" name="itemNumber" value="<?= $UpitemNumber?>">
+        <input type="hidden" name="itemCode" value="<?= $UpitemCode?>">
+        <input type="hidden" name="itemBrand" value="<?= $Upbrand?>">
+        <input type="hidden" name="itemCategory" value="<?= $Upcategory?>">
+        <input type="hidden" name="itemLocation" value="<?= $Uplocation?>">
+        <input type="hidden" name="itemPrice" value="<?= $Upprice?>">
+        <input type="hidden" name="itemUnits" value="<?= $Upunits?>">
+
+        <input type="number" class="stockInOut" id="stockInOut" name="stockInOut" required><br>
 
         <div class="stock_controls">
-        <select name="stockType" id="stockType">
+            <select name="stockType" id="stockType">
                 <option value="Stock Out">Stock Out</option>
-                    <option value="Stock In">Stock In</option>
-            
-                </select>    
+                <option value="Stock In">Stock In</option>
+            </select>    
 
-                <button class=stockBtn onClick ="StockChanger()">Execute</button>
-                <button class=RevBtn onClick ="Revert()">Revert</button>
-
+            <button type="submit" class="stockBtn">Execute</button>
+            <button type="button" class="RevBtn" onClick="Revert()">Revert</button>
         </div>
-                
+    </form>
+</div>
 
-        </div>
+<script>
+function Revert() {
+    // Reset the form fields
+    document.querySelector('form').reset();
+}
+</script>
 
 
         <script>
@@ -280,6 +297,10 @@ function StockChanger() {
 
 function Revert(){
     location.reload();
+}
+
+function close(){
+    window.close();
 }
 
 

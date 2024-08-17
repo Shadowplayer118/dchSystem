@@ -278,6 +278,7 @@ $result = mysqli_query($con, $sql);
 
                         <td>
                         <a href="inventory_Update.php?updateId=' . $inventory_Id . ' " target="_blank" class = "links">Update</a>
+                        <a href="inventory_Stock.php?updateId=' . $inventory_Id . ' " target="_blank" class = "links">Manage Stock</a>
                         <a href="inventory_Delete.php?deleteId=' . $inventory_Id . '" class = "links deleteConfirm" style = "background-color:red;"">Delete</a>
                         </td>
                         </tr>
@@ -351,6 +352,13 @@ $result = mysqli_query($con, $sql);
         document.getElementById("search").value = "";
         }
     </script>
+
+
+<script>
+    $(document).ready(function(){
+        console.log("Helloss")
+    });
+</script>
 
 
 
