@@ -2,31 +2,25 @@
 
 <?php
 include '../inventoryDb_connect.php';
+$conditions = [];
+$filterValue = isset($_GET['search']) ? $_GET['search'] : null;
+$dateValue = isset($_GET['date']) ? $_GET['date'] : null;
 
-unset($filterValue);
-
-
-
-if (isset($_GET['search'])) {   
-    $filterValue = $_GET['search'];
-    
-    // Example: Adjust this query to match your requirements
-    $sql = "SELECT * FROM stock_history WHERE transaction_type LIKE '%$filterValue%'";
-   
-    unset($filterValue);
-} else {
-    $sql = "SELECT * FROM stock_history;";
-    
-
-    unset($filterValue);
+if ($filterValue) {
+    $conditions[] = "transaction_type LIKE '%$filterValue%'";
 }
 
+if ($dateValue) {
+    $conditions[] = "DATE(date_updated) = '$dateValue'";
+}
 
-if (isset($_GET['search'])) {   
-    $calValue = $_GET['search'];   
-} 
+if (count($conditions) > 0) {
+    $sql = "SELECT * FROM stock_history WHERE " . implode(' AND ', $conditions);
+} else {
+    $sql = "SELECT * FROM stock_history";
+}
 
-$result = mysqli_query($con, $sql); 
+$result = mysqli_query($con, $sql);
 ?>
 
 <!DOCTYPE html>
@@ -54,14 +48,16 @@ $result = mysqli_query($con, $sql);
         <h2>DCH Inventory</h2>
         <!------Top----->
         <div class="controls">
-            <form action="" method="GET" class="search-bar"> 
-                <button type="submit" class="searchBtn btn btn-primary search-btn links">Search</button>
+        <form action="" method="GET" class="search-bar">
                 <label for="filter"></label>
-                <select id="search" type="date" class="searchBox" name="search" value="<?php if(isset($_GET['search'])){echo $_GET['search'];}?>" class="search-box" placeholder="Search data" autocomplete="off" required> 
-            <option value="Stock In">Stock In</option>
-            <option value="Stock Out">Stock Out</option>
+                <select id="search" name="search" class="searchBox">
+            
+                    <option value="Stock In" <?php if($filterValue == 'Stock In') echo 'selected'; ?>>Stock In</option>
+                    <option value="Stock Out" <?php if($filterValue == 'Stock Out') echo 'selected'; ?>>Stock Out</option>
+                </select>
 
-            </select>
+                <input type="date" name="date" value="<?php if(isset($_GET['date'])) { echo $_GET['date']; } ?>">
+                <button type="submit" class="searchBtn btn btn-primary">Search</button>
             </form>
             <button onClick="resetToToday()" style="background-color:blue; color:white;">Today</button>
             <button onClick="checkInternet()" style="background-color:green; color:white;">Convert to Excel</button>
