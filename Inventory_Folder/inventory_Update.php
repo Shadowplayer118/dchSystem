@@ -313,7 +313,7 @@ function confirmAction(event) {
     var itemNumber = form.querySelector('input[name="itemNumber"]').value;
 
             // Display confirmation dialog
-            if (confirm(`Are you sure you want to ${stockType} ${stockInOut} ${itemName}?`)) {
+            if (confirm(`Are you sure you want to ${stockType} ${stockInOut} pieces of ${itemName}?`)) {
                 // Submit the form if confirmed
                 document.getElementById('stockForm').submit();
             }
